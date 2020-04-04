@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>拜德英纳夫</title>
   
-  <subtitle>静以修身，俭以养德</subtitle>
+  <subtitle>静以修身</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ilovea.asia/"/>
@@ -73,7 +73,7 @@
     <link href="http://ilovea.asia/2020/04/04/hexo1/"/>
     <id>http://ilovea.asia/2020/04/04/hexo1/</id>
     <published>2020-04-04T01:53:56.000Z</published>
-    <updated>2020-04-04T10:46:27.726Z</updated>
+    <updated>2020-04-04T12:34:25.520Z</updated>
     
     <summary type="html">
     
@@ -185,11 +185,40 @@
   </entry>
   
   <entry>
+    <title>我在hexo博客自己写的第一篇文章</title>
+    <link href="http://ilovea.asia/2020/04/02/secondone/"/>
+    <id>http://ilovea.asia/2020/04/02/secondone/</id>
+    <published>2020-04-02T11:04:35.000Z</published>
+    <updated>2020-04-04T12:44:44.944Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;随便聊聊&quot;&gt;&lt;a href=&quot;#随便聊聊&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="随笔录" scheme="http://ilovea.asia/categories/%E9%9A%8F%E7%AC%94%E5%BD%95/"/>
+    
+    
+      <category term="hexo博客" scheme="http://ilovea.asia/tags/hexo%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="随笔" scheme="http://ilovea.asia/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Markdown 教程</title>
     <link href="http://ilovea.asia/2020/02/29/markdown1/"/>
     <id>http://ilovea.asia/2020/02/29/markdown1/</id>
     <published>2020-02-29T12:21:19.000Z</published>
-    <updated>2020-04-04T12:24:06.608Z</updated>
+    <updated>2020-04-04T12:36:23.169Z</updated>
     
     <summary type="html">
     

@@ -152,6 +152,33 @@
     
     
     <entry>
+      <title>我在hexo博客自己写的第一篇文章</title>
+      <link href="/2020/04/02/secondone/"/>
+      <url>/2020/04/02/secondone/</url>
+      
+        <content type="html"><![CDATA[<h2 id="随便聊聊"><a href="#随便聊聊" class="headerlink" title="随便聊聊"></a>随便聊聊</h2><p>这个博客是我在业余时间学习搭建的，这个是基于Hexo博客系统搭建的，再加上github的代码管理工具，这样就是相当于免费的，多就是需要大量的时间去维护和使用；</p><h2 id="另一个网站"><a href="#另一个网站" class="headerlink" title="另一个网站"></a>另一个网站</h2><p>如果你还是喜欢看简单一点的，还是去我的另一个主要的博客看吧！<br>地址：<a href="http://118.178.84.132:8090/" target="_blank" rel="noopener">http://118.178.84.132:8090/</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo博客 </tag>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Markdown 教程</title>
       <link href="/2020/02/29/markdown1/"/>
       <url>/2020/02/29/markdown1/</url>
