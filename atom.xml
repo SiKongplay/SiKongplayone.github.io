@@ -5,9 +5,9 @@
   <subtitle>静以修身</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://ilovea.asia/"/>
-  <updated>2020-04-04T08:47:15.050Z</updated>
-  <id>http://ilovea.asia/</id>
+  <link href="https://zjt.ilovea.asia/"/>
+  <updated>2020-04-04T14:14:19.172Z</updated>
+  <id>https://zjt.ilovea.asia/</id>
   
   <author>
     <name>Badenough</name>
@@ -17,9 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>HTTPS系列干货（一）</title>
+    <link href="https://zjt.ilovea.asia/2020/04/04/HTTPS1/"/>
+    <id>https://zjt.ilovea.asia/2020/04/04/HTTPS1/</id>
+    <published>2020-04-04T13:40:15.000Z</published>
+    <updated>2020-04-04T14:14:19.172Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;HTTPS（全称：HyperText-Transfer-Protocol-over-Secure-Socket-Layer）&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://zjt.ilovea.asia/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="https" scheme="https://zjt.ilovea.asia/tags/https/"/>
+    
+      <category term="ssl" scheme="https://zjt.ilovea.asia/tags/ssl/"/>
+    
+      <category term="程序员" scheme="https://zjt.ilovea.asia/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+  </entry>
+  
+  <entry>
     <title>单片机作业：期中</title>
-    <link href="http://ilovea.asia/2020/04/04/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD/"/>
-    <id>http://ilovea.asia/2020/04/04/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD/</id>
+    <link href="https://zjt.ilovea.asia/2020/04/04/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD/"/>
+    <id>https://zjt.ilovea.asia/2020/04/04/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD/</id>
     <published>2020-04-04T05:24:30.000Z</published>
     <updated>2020-04-04T08:47:15.050Z</updated>
     
@@ -36,42 +67,19 @@
     </summary>
     
     
-      <category term="单片机作业" scheme="http://ilovea.asia/categories/%E5%8D%95%E7%89%87%E6%9C%BA%E4%BD%9C%E4%B8%9A/"/>
+      <category term="单片机作业" scheme="https://zjt.ilovea.asia/categories/%E5%8D%95%E7%89%87%E6%9C%BA%E4%BD%9C%E4%B8%9A/"/>
     
     
-      <category term="单片机" scheme="http://ilovea.asia/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+      <category term="单片机" scheme="https://zjt.ilovea.asia/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
-      <category term="C语言" scheme="http://ilovea.asia/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://ilovea.asia/2020/04/04/hello-world/"/>
-    <id>http://ilovea.asia/2020/04/04/hello-world/</id>
-    <published>2020-04-04T02:04:26.688Z</published>
-    <updated>2020-04-04T02:04:26.688Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
-        
-      
-    
-    </summary>
-    
-    
+      <category term="C语言" scheme="https://zjt.ilovea.asia/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
     <title>hexo1</title>
-    <link href="http://ilovea.asia/2020/04/04/hexo1/"/>
-    <id>http://ilovea.asia/2020/04/04/hexo1/</id>
+    <link href="https://zjt.ilovea.asia/2020/04/04/hexo1/"/>
+    <id>https://zjt.ilovea.asia/2020/04/04/hexo1/</id>
     <published>2020-04-04T01:53:56.000Z</published>
     <updated>2020-04-04T12:34:25.520Z</updated>
     
@@ -88,19 +96,19 @@
     </summary>
     
     
-      <category term="博客技术" scheme="http://ilovea.asia/categories/%E5%8D%9A%E5%AE%A2%E6%8A%80%E6%9C%AF/"/>
+      <category term="博客技术" scheme="https://zjt.ilovea.asia/categories/%E5%8D%9A%E5%AE%A2%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="hexo博客" scheme="http://ilovea.asia/tags/hexo%E5%8D%9A%E5%AE%A2/"/>
+      <category term="hexo博客" scheme="https://zjt.ilovea.asia/tags/hexo%E5%8D%9A%E5%AE%A2/"/>
     
-      <category term="matery主题" scheme="http://ilovea.asia/tags/matery%E4%B8%BB%E9%A2%98/"/>
+      <category term="matery主题" scheme="https://zjt.ilovea.asia/tags/matery%E4%B8%BB%E9%A2%98/"/>
     
   </entry>
   
   <entry>
     <title>单片机作业：7</title>
-    <link href="http://ilovea.asia/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA7/"/>
-    <id>http://ilovea.asia/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA7/</id>
+    <link href="https://zjt.ilovea.asia/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA7/"/>
+    <id>https://zjt.ilovea.asia/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA7/</id>
     <published>2020-04-03T14:08:33.000Z</published>
     <updated>2020-04-04T12:04:36.720Z</updated>
     
@@ -117,19 +125,19 @@
     </summary>
     
     
-      <category term="单片机作业" scheme="http://ilovea.asia/categories/%E5%8D%95%E7%89%87%E6%9C%BA%E4%BD%9C%E4%B8%9A/"/>
+      <category term="单片机作业" scheme="https://zjt.ilovea.asia/categories/%E5%8D%95%E7%89%87%E6%9C%BA%E4%BD%9C%E4%B8%9A/"/>
     
     
-      <category term="单片机" scheme="http://ilovea.asia/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+      <category term="单片机" scheme="https://zjt.ilovea.asia/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
-      <category term="C语言" scheme="http://ilovea.asia/tags/C%E8%AF%AD%E8%A8%80/"/>
+      <category term="C语言" scheme="https://zjt.ilovea.asia/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
     <title>单片机作业：8</title>
-    <link href="http://ilovea.asia/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA8/"/>
-    <id>http://ilovea.asia/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA8/</id>
+    <link href="https://zjt.ilovea.asia/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA8/"/>
+    <id>https://zjt.ilovea.asia/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA8/</id>
     <published>2020-04-03T11:24:08.000Z</published>
     <updated>2020-04-04T12:04:43.984Z</updated>
     
@@ -146,19 +154,19 @@
     </summary>
     
     
-      <category term="单片机作业" scheme="http://ilovea.asia/categories/%E5%8D%95%E7%89%87%E6%9C%BA%E4%BD%9C%E4%B8%9A/"/>
+      <category term="单片机作业" scheme="https://zjt.ilovea.asia/categories/%E5%8D%95%E7%89%87%E6%9C%BA%E4%BD%9C%E4%B8%9A/"/>
     
     
-      <category term="单片机" scheme="http://ilovea.asia/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+      <category term="单片机" scheme="https://zjt.ilovea.asia/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
-      <category term="C语言" scheme="http://ilovea.asia/tags/C%E8%AF%AD%E8%A8%80/"/>
+      <category term="C语言" scheme="https://zjt.ilovea.asia/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
     <title>一篇文章多个categories</title>
-    <link href="http://ilovea.asia/2020/04/02/hexo2/"/>
-    <id>http://ilovea.asia/2020/04/02/hexo2/</id>
+    <link href="https://zjt.ilovea.asia/2020/04/02/hexo2/"/>
+    <id>https://zjt.ilovea.asia/2020/04/02/hexo2/</id>
     <published>2020-04-02T12:21:19.000Z</published>
     <updated>2020-04-04T11:08:53.022Z</updated>
     
@@ -175,19 +183,19 @@
     </summary>
     
     
-      <category term="博客技术" scheme="http://ilovea.asia/categories/%E5%8D%9A%E5%AE%A2%E6%8A%80%E6%9C%AF/"/>
+      <category term="博客技术" scheme="https://zjt.ilovea.asia/categories/%E5%8D%9A%E5%AE%A2%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="hexo博客" scheme="http://ilovea.asia/tags/hexo%E5%8D%9A%E5%AE%A2/"/>
+      <category term="hexo博客" scheme="https://zjt.ilovea.asia/tags/hexo%E5%8D%9A%E5%AE%A2/"/>
     
-      <category term="next主题" scheme="http://ilovea.asia/tags/next%E4%B8%BB%E9%A2%98/"/>
+      <category term="next主题" scheme="https://zjt.ilovea.asia/tags/next%E4%B8%BB%E9%A2%98/"/>
     
   </entry>
   
   <entry>
     <title>我在hexo博客自己写的第一篇文章</title>
-    <link href="http://ilovea.asia/2020/04/02/secondone/"/>
-    <id>http://ilovea.asia/2020/04/02/secondone/</id>
+    <link href="https://zjt.ilovea.asia/2020/04/02/secondone/"/>
+    <id>https://zjt.ilovea.asia/2020/04/02/secondone/</id>
     <published>2020-04-02T11:04:35.000Z</published>
     <updated>2020-04-04T12:44:44.944Z</updated>
     
@@ -204,19 +212,19 @@
     </summary>
     
     
-      <category term="随笔录" scheme="http://ilovea.asia/categories/%E9%9A%8F%E7%AC%94%E5%BD%95/"/>
+      <category term="随笔录" scheme="https://zjt.ilovea.asia/categories/%E9%9A%8F%E7%AC%94%E5%BD%95/"/>
     
     
-      <category term="hexo博客" scheme="http://ilovea.asia/tags/hexo%E5%8D%9A%E5%AE%A2/"/>
+      <category term="hexo博客" scheme="https://zjt.ilovea.asia/tags/hexo%E5%8D%9A%E5%AE%A2/"/>
     
-      <category term="随笔" scheme="http://ilovea.asia/tags/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="https://zjt.ilovea.asia/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
   <entry>
     <title>Markdown 教程</title>
-    <link href="http://ilovea.asia/2020/02/29/markdown1/"/>
-    <id>http://ilovea.asia/2020/02/29/markdown1/</id>
+    <link href="https://zjt.ilovea.asia/2020/02/29/markdown1/"/>
+    <id>https://zjt.ilovea.asia/2020/02/29/markdown1/</id>
     <published>2020-02-29T12:21:19.000Z</published>
     <updated>2020-04-04T12:36:23.169Z</updated>
     
@@ -234,12 +242,35 @@
     </summary>
     
     
-      <category term="Markdown应用" scheme="http://ilovea.asia/categories/Markdown%E5%BA%94%E7%94%A8/"/>
+      <category term="Markdown应用" scheme="https://zjt.ilovea.asia/categories/Markdown%E5%BA%94%E7%94%A8/"/>
     
     
-      <category term="博客" scheme="http://ilovea.asia/tags/%E5%8D%9A%E5%AE%A2/"/>
+      <category term="博客" scheme="https://zjt.ilovea.asia/tags/%E5%8D%9A%E5%AE%A2/"/>
     
-      <category term="markdown" scheme="http://ilovea.asia/tags/markdown/"/>
+      <category term="markdown" scheme="https://zjt.ilovea.asia/tags/markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://zjt.ilovea.asia/2020/02/28/hello-world/"/>
+    <id>https://zjt.ilovea.asia/2020/02/28/hello-world/</id>
+    <published>2020-02-28T13:40:15.000Z</published>
+    <updated>2020-04-04T13:58:13.403Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
+    
+    </summary>
+    
+    
     
   </entry>
   
