@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>拜德英纳夫</title>
+  
+  <subtitle>宁静以致远</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://ilovea.asia/"/>
+  <updated>2020-04-04T07:04:29.527Z</updated>
+  <id>http://ilovea.asia/</id>
+  
+  <author>
+    <name>Badenough</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>单片机作业：期中</title>
+    <link href="http://ilovea.asia/2020/04/04/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    <id>http://ilovea.asia/2020/04/04/%E5%8D%95%E7%89%87%E6%9C%BA/</id>
+    <published>2020-04-04T05:24:30.000Z</published>
+    <updated>2020-04-04T07:04:29.527Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;功能要求：&quot;&gt;&lt;a href=&quot;#功能要求：&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="单片机作业" scheme="http://ilovea.asia/categories/%E5%8D%95%E7%89%87%E6%9C%BA%E4%BD%9C%E4%B8%9A/"/>
+    
+    
+      <category term="单片机" scheme="http://ilovea.asia/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+      <category term="学习" scheme="http://ilovea.asia/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://ilovea.asia/2020/04/04/hello-world/"/>
+    <id>http://ilovea.asia/2020/04/04/hello-world/</id>
+    <published>2020-04-04T02:04:26.688Z</published>
+    <updated>2020-04-04T02:04:26.688Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
