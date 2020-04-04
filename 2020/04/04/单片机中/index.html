@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 拜德英纳夫">
+    <meta name="keywords" content="单片机作业：期中, 拜德英纳夫">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | 拜德英纳夫</title>
+    <title>单片机作业：期中 | 拜德英纳夫</title>
     <link rel="icon" type="image/png" href="/badenough.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -298,12 +298,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">单片机作业：期中</h1>
                 </div>
             </div>
         </div>
@@ -426,12 +426,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/">
+                                <span class="chip bg-color">单片机</span>
+                            </a>
+                        
+                            <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                                <span class="chip bg-color">C语言</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA%E4%BD%9C%E4%B8%9A/" class="post-category">
+                                单片机作业
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -454,14 +471,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    75
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    5 分
                 </div>
                 
 
@@ -477,16 +494,316 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h2 id="功能要求："><a href="#功能要求：" class="headerlink" title="功能要求："></a>功能要求：</h2><p>1.控制某运动工作台沿轴向运动，有前进和后退两个方向。</p>
+<p>2.控制系统设计有三个按钮：一个是模式切换按钮，一个是“foward”按键，一个是“backward”按键。 </p>
+<p>3.工作台两端设计各设计安排一个限位传感器。</p>
+<p>4.系统有2种控制模式： </p>
+<p>一种是点动控制，即“foward”按键按下时工作台前进动作，放手即停；“backward”按键按下时工作台后退动作，放手即停。 </p>
+<p>第二种是自动动控制，即“foward”工作台前进/停止复用按键；“backward”工作台后退/停止复用按键。 </p>
+<p>第三种是往复循环模式，即自动在两限位之间循环动作，“foward”按键作为启动按键，按下后工作台前进动作，遇到右侧限位自动反转运行，直到遇到左侧限位，然后又反向运行，如此往复运动，“backward”按键作为停止按键，按下后循环运动停止。</p>
+<p>5.液晶显示系统工作状态，界面自拟。</p>
+<p>6.电机在运动时不得切换控制模式。</p>
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>这题的主要难点就是怎么将一颗按钮用于三种用途？<br>目前的想法是将原有的一颗键上的flag用一个循环，使之有三种功能：例如flag=0时干什么；flag=1时做什么；flag=2时做什么；这样就需要一个num来做循环，num++来实现，0到2的循环；<br>这就有两种方式了，如下：</p>
+<pre><code>第一种：for(num==0 ;num&lt;3;num++)
 
+第二种：while(1)
+        {
+            num++;
+            if(num=3)
+            num=0;
+        }
+</code></pre><p>按照上面的两种方式就可以解决掉所有问题了，其余的就自己看代码吧！</p>
+<h2 id="具体过程代码："><a href="#具体过程代码：" class="headerlink" title="具体过程代码："></a>具体过程代码：</h2><pre><code>#include&lt;reg51.h&gt;
+#include&lt;1602lcd.h&gt;
+sbit signal1=P1^0; 
+sbit signal2=P1^1;  // control port
+sbit forward=P1^2;
+sbit backward=P1^3;  //  two keys
+sbit control_mode=P1^4;
+sbit limit_l=P3^2;
+sbit limit_r=P3^3;
+
+unsigned char md[]={&quot;mode:&quot;};       //mode
+unsigned char st[]={&quot;status:&quot;};       //状态
+unsigned char au[]={&quot;auto&quot;};
+unsigned char ma[]={&quot;manu&quot;};
+unsigned char fd[]={&quot;fowd&quot;};
+unsigned char stp[]={&quot;stop&quot;};
+unsigned char bk[]={&quot;back&quot;};
+unsigned char lp[]={&quot;loop&quot;};
+
+int num;
+
+bit status=0;       //status=1 表示在动   =0  停止
+bit mode_flag;
+bit fwd_flag;
+bit bak_flag;
+bit limit_l_flag;
+bit limit_r_flag;
+bit limit_flag;
+
+void scan_key();
+void out_put();
+void check_limit();
+void check_limit1();
+
+void main()
+{
+    lcd_init();
+    lcd_pos(1,1);
+    lcdwrite_string(md);
+    lcd_pos(1,7);     
+    lcdwrite_string(ma);
+    lcd_pos(2,1);
+    lcdwrite_string(st);
+    lcd_pos(2,9);
+    lcdwrite_string(stp);
+
+    while(1)
+    {
+      scan_key();
+      out_put();
+
+    }
+}
+
+void scan_key()        //z单键复用
+{    
+    if(control_mode==0 &amp;&amp; status==0)
+    {
+        num++;
+        if(num==3)        
+            num=0;     
+        while(control_mode==0);
+
+        if(num==0)         //手动
+        {
+            lcd_pos(1,7);
+            lcdwrite_string(ma);        
+        }
+        if(num==1)         //自动
+        {
+            lcd_pos(1,7);
+            lcdwrite_string(au);        
+        }
+        if(num==2)            //循环
+        {        
+            lcd_pos(1,7);
+            lcdwrite_string(lp);        
+        }
+
+    }
+}
+
+void out_put()
+{
+     if(num==1)     //auto
+     {
+          if(forward==0 &amp;&amp; bak_flag==0 &amp;&amp; limit_r_flag==0 )
+          {
+            fwd_flag=~fwd_flag;
+            if(fwd_flag==1)
+            {
+                lcd_pos(1,16);
+                lcdwrite_zm(&#39; &#39;);
+                lcd_pos(2,9);
+                lcdwrite_string(fd);
+                signal1=1;
+                signal2=0;
+                status=1;
+                limit_l_flag=0;
+            }
+            else
+            {
+                lcd_pos(1,16);
+                lcdwrite_zm(&#39; &#39;);
+                lcd_pos(2,9);
+                lcdwrite_string(stp);
+                signal1=1;
+                signal2=1;
+                status=0;                              
+            } 
+            while(forward==0);
+          }
+         else if(backward==0 &amp;&amp; fwd_flag==0 &amp;&amp; limit_l_flag==0 )
+          {
+            bak_flag=~bak_flag;
+            if(bak_flag==1)
+            {
+                lcd_pos(1,16);
+                lcdwrite_zm(&#39; &#39;);
+                lcd_pos(2,9);
+                lcdwrite_string(bk);
+                signal1=0;
+                signal2=1;
+                status=1;
+                limit_r_flag=0;
+            }
+            else
+            {
+                lcd_pos(1,16);
+                lcdwrite_zm(&#39; &#39;);
+                lcd_pos(2,9);
+                lcdwrite_string(stp);
+                signal1=1;
+                signal2=1;
+                status=0;                              
+            } 
+          while(backward==0);
+          }
+          check_limit();    
+     }
+  else if(num==0)         //manu
+    {
+          if(forward==0 &amp;&amp; limit_r_flag==0)
+          {
+            lcd_pos(1,16);
+            lcdwrite_zm(&#39; &#39;);
+
+            lcd_pos(2,9);
+            lcdwrite_string(fd);
+            signal1=1;
+            signal2=0;
+            status=1;
+            limit_l_flag=0;            
+          }
+         else if(backward==0 &amp;&amp; limit_l_flag==0)
+          {
+            lcd_pos(1,16);
+            lcdwrite_zm(&#39; &#39;);
+
+            lcd_pos(2,9);
+            lcdwrite_string(bk);
+            signal1=0;
+            signal2=1;
+            status=1;
+            limit_r_flag=0;
+          }
+          else
+          {
+            lcd_pos(1,16);
+            lcdwrite_zm(&#39; &#39;);
+
+            lcd_pos(2,9);
+            lcdwrite_string(stp);
+            signal1=1;
+            signal2=1;
+            status=0;
+          }
+          check_limit();
+    }
+    else if(num==2)
+    {    
+        if(forward==0 &amp;&amp; status==0)
+        {
+            lcd_pos(1,16);
+            lcdwrite_zm(&#39; &#39;);
+            lcd_pos(2,9);
+            lcdwrite_string(fd);
+
+            signal1=1;
+            signal2=0;
+            status=1;
+
+            if(limit_r==0)
+            {
+                limit_flag=1;
+                signal1=0;
+                signal2=1;
+                status=1;
+            //有极限，触发后退
+                lcd_pos(1,16);
+                lcdwrite_zm(&#39;r&#39;);
+                lcd_pos(2,9);
+                lcdwrite_string(bk);
+                if(limit_l==0)
+                {
+                    limit_flag=1;
+                    signal1=1;
+                    signal2=0;
+                    status=1;
+                //左极限，触发前进
+                    lcd_pos(1,16);
+                    lcdwrite_zm(&#39;l&#39;);
+                    lcd_pos(2,9);
+                    lcdwrite_string(fd);
+                }
+            }
+        }
+        else if(backward==0)
+        {
+            lcd_pos(1,16);
+            lcdwrite_zm(&#39; &#39;);
+            lcd_pos(2,9);
+            lcdwrite_string(stp);
+
+            signal1=1;
+            signal2=1;
+            status=0;
+        }
+        check_limit1();
+    }
+}
+
+void check_limit()
+{
+    if(limit_l==0)
+    {
+        limit_l_flag=1; //左限制
+        signal1=1;
+        signal2=1;
+        status=0;
+        fwd_flag=0;
+        bak_flag=0;
+
+        lcd_pos(1,16);
+        lcdwrite_zm(&#39;l&#39;);
+        lcd_pos(2,9);
+        lcdwrite_string(stp);
+
+    }
+    if(limit_r==0)
+    {
+        limit_r_flag=1;     //右限制
+        signal1=1;
+        signal2=1;
+        status=0;
+        fwd_flag=0;
+        bak_flag=0;
+
+        lcd_pos(1,16);
+        lcdwrite_zm(&#39;r&#39;);
+        lcd_pos(2,9);
+        lcdwrite_string(stp);        
+    }
+}
+
+void check_limit1()
+{
+    if(limit_l==0)
+    {
+        signal1=1;
+        signal2=0;
+        status=1;
+    //左极限，触发前进
+        lcd_pos(1,16);
+        lcdwrite_zm(&#39;l&#39;);
+        lcd_pos(2,9);
+        lcdwrite_string(fd);
+
+    }
+    if(limit_r==0)
+    {
+        signal1=0;
+        signal2=1;
+        status=1;
+    //右极限，触发后退
+        lcd_pos(1,16);
+        lcdwrite_zm(&#39;r&#39;);
+        lcd_pos(2,9);
+        lcdwrite_string(bk);        
+    }
+}</code></pre>
             </div>
             <hr/>
 
@@ -511,7 +828,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ilovea.asia/2020/04/04/hello-world/">http://ilovea.asia/2020/04/04/hello-world/</a>
+                    <a href="http://ilovea.asia/2020/04/04/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD/">http://ilovea.asia/2020/04/04/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -548,7 +865,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/">
+                                    <span class="chip bg-color">单片机</span>
+                                </a>
+                            
+                                <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                                    <span class="chip bg-color">C语言</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -712,9 +1037,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/04/04/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD/">
                     <div class="card-image">
@@ -732,9 +1058,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -747,6 +1073,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -769,19 +1096,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/04/hexo1/">
+                <a href="/2020/04/04/hello-world/">
                     <div class="card-image">
                         
-                        <img src="https://i0.hdslb.com/bfs/album/bbc115fe65ad91c405cb0d37be9d27c8d4a5b1f3.jpg" class="responsive-img" alt="hexo1">
                         
-                        <span class="card-title">hexo1</span>
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        
+                        <span class="card-title">Hello World</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            文章 Front-matter 介绍Front-matter 选项详解
-Front-matter 选项中的所有内容均为非必填的。但我仍然建议
+                            Welcome to Hexo! This is your very first post. Check documentation for
                         
                     </div>
                     <div class="publish-info">
@@ -790,27 +1117,11 @@ Front-matter 选项中的所有内容均为非必填的。但我仍然建议
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%8A%80%E6%9C%AF/" class="post-category">
-                                    博客技术
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Badenough
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/hexo%E5%8D%9A%E5%AE%A2/">
-                        <span class="chip bg-color">hexo博客</span>
-                    </a>
-                    
-                    <a href="/tags/matery%E4%B8%BB%E9%A2%98/">
-                        <span class="chip bg-color">matery主题</span>
-                    </a>
-                    
                 </div>
                 
             </div>

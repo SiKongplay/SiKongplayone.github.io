@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>拜德英纳夫</title>
   
-  <subtitle>宁静以致远</subtitle>
+  <subtitle>静以修身，俭以养德</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ilovea.asia/"/>
-  <updated>2020-04-04T07:04:29.527Z</updated>
+  <updated>2020-04-04T08:47:15.050Z</updated>
   <id>http://ilovea.asia/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>单片机作业：期中</title>
-    <link href="http://ilovea.asia/2020/04/04/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
-    <id>http://ilovea.asia/2020/04/04/%E5%8D%95%E7%89%87%E6%9C%BA/</id>
+    <link href="http://ilovea.asia/2020/04/04/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD/"/>
+    <id>http://ilovea.asia/2020/04/04/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD/</id>
     <published>2020-04-04T05:24:30.000Z</published>
-    <updated>2020-04-04T07:04:29.527Z</updated>
+    <updated>2020-04-04T08:47:15.050Z</updated>
     
     <summary type="html">
     
@@ -41,7 +41,7 @@
     
       <category term="单片机" scheme="http://ilovea.asia/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
-      <category term="学习" scheme="http://ilovea.asia/tags/%E5%AD%A6%E4%B9%A0/"/>
+      <category term="C语言" scheme="http://ilovea.asia/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
@@ -65,6 +65,152 @@
     </summary>
     
     
+    
+  </entry>
+  
+  <entry>
+    <title>hexo1</title>
+    <link href="http://ilovea.asia/2020/04/04/hexo1/"/>
+    <id>http://ilovea.asia/2020/04/04/hexo1/</id>
+    <published>2020-04-04T01:53:56.000Z</published>
+    <updated>2020-04-04T10:46:27.726Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;文章-Front-matter-介绍&quot;&gt;&lt;a href=&quot;#文章-Front-matter-介绍&quot; class=&quot;headerlink&quot; title=&quot;文章 Front-matter 介绍&quot;&gt;&lt;/a&gt;文章 Front-matter 介绍&lt;/h2&gt;&lt;h3
+        
+      
+    
+    </summary>
+    
+    
+      <category term="博客技术" scheme="http://ilovea.asia/categories/%E5%8D%9A%E5%AE%A2%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="hexo博客" scheme="http://ilovea.asia/tags/hexo%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="matery主题" scheme="http://ilovea.asia/tags/matery%E4%B8%BB%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>单片机作业：7</title>
+    <link href="http://ilovea.asia/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA7/"/>
+    <id>http://ilovea.asia/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA7/</id>
+    <published>2020-04-03T14:08:33.000Z</published>
+    <updated>2020-04-04T12:04:36.720Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;课后项目设计功能要求：&quot;&gt;&lt;a href=&quot;#课后项目设计功能要求：&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="单片机作业" scheme="http://ilovea.asia/categories/%E5%8D%95%E7%89%87%E6%9C%BA%E4%BD%9C%E4%B8%9A/"/>
+    
+    
+      <category term="单片机" scheme="http://ilovea.asia/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+      <category term="C语言" scheme="http://ilovea.asia/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>单片机作业：8</title>
+    <link href="http://ilovea.asia/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA8/"/>
+    <id>http://ilovea.asia/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA8/</id>
+    <published>2020-04-03T11:24:08.000Z</published>
+    <updated>2020-04-04T12:04:43.984Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;老师给的要求&quot;&gt;&lt;a href=&quot;#老师给的要求&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="单片机作业" scheme="http://ilovea.asia/categories/%E5%8D%95%E7%89%87%E6%9C%BA%E4%BD%9C%E4%B8%9A/"/>
+    
+    
+      <category term="单片机" scheme="http://ilovea.asia/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+      <category term="C语言" scheme="http://ilovea.asia/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一篇文章多个categories</title>
+    <link href="http://ilovea.asia/2020/04/02/hexo2/"/>
+    <id>http://ilovea.asia/2020/04/02/hexo2/</id>
+    <published>2020-04-02T12:21:19.000Z</published>
+    <updated>2020-04-04T11:08:53.022Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在很多情况下，我们希望在 Hexo 中写的一篇文章能够同时属于多个分类， 例如我写一篇 《Servlet笔记》，我既想将它放在 Java
+        
+      
+    
+    </summary>
+    
+    
+      <category term="博客技术" scheme="http://ilovea.asia/categories/%E5%8D%9A%E5%AE%A2%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="hexo博客" scheme="http://ilovea.asia/tags/hexo%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="next主题" scheme="http://ilovea.asia/tags/next%E4%B8%BB%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown 教程</title>
+    <link href="http://ilovea.asia/2020/02/29/markdown1/"/>
+    <id>http://ilovea.asia/2020/02/29/markdown1/</id>
+    <published>2020-02-29T12:21:19.000Z</published>
+    <updated>2020-04-04T12:03:54.391Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Markdown-标题&quot;&gt;&lt;a href=&quot;#Markdown-标题&quot; class=&quot;headerlink&quot; title=&quot;Markdown 标题&quot;&gt;&lt;/a&gt;Markdown 标题&lt;/h2&gt;&lt;p&gt;Markdown 标题有两种格式。&lt;/p&gt;
+&lt;p&gt;###1、使用
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Markdown应用" scheme="http://ilovea.asia/categories/Markdown%E5%BA%94%E7%94%A8/"/>
+    
+    
+      <category term="博客" scheme="http://ilovea.asia/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="markdown" scheme="http://ilovea.asia/tags/markdown/"/>
     
   </entry>
   

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 拜德英纳夫">
+    <meta name="keywords" content="单片机作业：8, 拜德英纳夫">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | 拜德英纳夫</title>
+    <title>单片机作业：8 | 拜德英纳夫</title>
     <link rel="icon" type="image/png" href="/badenough.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -303,7 +303,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">单片机作业：8</h1>
                 </div>
             </div>
         </div>
@@ -426,12 +426,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/">
+                                <span class="chip bg-color">单片机</span>
+                            </a>
+                        
+                            <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                                <span class="chip bg-color">C语言</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA%E4%BD%9C%E4%B8%9A/" class="post-category">
+                                单片机作业
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -440,7 +457,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-04-04
+                    2020-04-03
                 </div>
                 
 
@@ -454,14 +471,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    75
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    8 分
                 </div>
                 
 
@@ -477,16 +494,430 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h2 id="老师给的要求"><a href="#老师给的要求" class="headerlink" title="老师给的要求"></a>老师给的要求</h2><p>1.控制运动工作台的两个电机均可沿轴向运动，有前进和后退两个方向。<br>2.每轴的电机都有2种控制模式：<br>一种是点动控制，即“foward”按键按下时工作台前进动作，放手即停；“backward”按键按下时工作台后退动作，放手即停。<br>另一种是：模态动作控制，即只要“foward”按键按下，工作台即发生前进动作，放手后依然保持前进动作，除非机床接到新的控制命令；即只要“backward”按键按下，工作台即发生后退动作，放手后依然保持后退动作，除非机床接到新的控制命令。<br>3.控制系统设计有四个按钮：一个是运动轴电机选择的切换按键，一个是模式切换按钮，一个是“foward”按键，一个是“backward”按键。 k1-k4这四个按键可由设计者根据设计功能要求自行分配。<br>3.工作台的每个运动轴两端各设计安排一个限位传感器，采用外部中断扩展方式设计，电路原理如图所示。<br>4.液晶显示系统工作状态，界面自拟。<br>5.电机在运动时不得切换控制模式。<br>6.触碰到限位开关时，要求用中断功能实现停止电机动作，并做液晶报警提醒。<br>7.其他个性化功能自拟。</p>
+<h2 id="写代码过程"><a href="#写代码过程" class="headerlink" title="写代码过程"></a>写代码过程</h2><p>将原来的程序进行加工，现在只有一个控制端口，但是要实现4种控制，这种和上次的很想但是又有变化，将原来的设计重新做一下，再将新的信号接入，这样就可以了。<br>在运行过程中出现了很多问题，在设计之前以为就是小小的改变了一下，这次的代码量明显比之前多了很多，所以重新设计的量也大了。一开始出现了按钮按下电机可以转动，但是相互锁的只有一次机会，我找了好几久才发现，原来是一次限位之后没有释放第二次的机会，最后我还是解决了；还有的就是代码的量太大了，有点乱，我都搞混了，以后写代码后面必须加一些可以区分的标志物，这样方便修改和编辑。</p>
+<p>这次的代码练习我做了一个下午，为什么时间那么长呢？是因为我找错误找了好久，本就已经找到代码错在哪里了，但是还是搞了那么久，不知道为什么就是有点乱，以后我知道了，在写代码后面必须要注释一些东西加以区分，这样方便以后修改和编辑。</p>
+<h2 id="单片机代码："><a href="#单片机代码：" class="headerlink" title="单片机代码："></a>单片机代码：</h2><pre><code>#include&lt;reg51.h&gt;
+#include&lt;1602lcd.h&gt;
+sbit signal1=P1^0; 
+sbit signal2=P1^1; 
+sbit signal3=P1^7;
+sbit signal4=P2^7;    // control port
+sbit forward=P1^2;    
+sbit backward=P1^3; 
+sbit run=P1^5;      //  four keys
+sbit control_mode=P1^4;
 
+sbit limit_1l=P2^3;        
+sbit limit_1r=P2^4;
+sbit limit_2l=P2^5;        
+sbit limit_2r=P2^6;     //four limits  
+
+unsigned char md[]={&quot;mode:&quot;};       
+unsigned char st[]={&quot;status:&quot;};       //状态
+unsigned char au[]={&quot;auto&quot;};
+unsigned char ma[]={&quot;manu&quot;};
+unsigned char fd[]={&quot;fowd&quot;};
+unsigned char bk[]={&quot;back&quot;};
+unsigned char stp[]={&quot;stop&quot;};
+unsigned char x[]={&quot;x&quot;};
+unsigned char y[]={&quot;y&quot;};
+
+bit status=0;       //status=1 动 0 停止
+bit mode_flag;
+bit fd_flag;
+bit bk_flag;
+bit run_flag;
+bit fd_flag2;
+bit bk_flag2;
+
+bit limit_1l_flag;  //限位标志位
+bit limit_1r_flag;
+bit limit_2l_flag;
+bit limit_2r_flag;
+
+void scan_key();
+void out_put();
+void scan_key2();
+void main()
+{
+    lcd_init();
+    lcd_pos(1,1);
+    lcdwrite_string(md);
+    lcd_pos(1,7);     
+    lcdwrite_string(ma);
+    lcd_pos(2,1);
+    lcdwrite_string(st);
+    lcd_pos(2,9);
+    lcdwrite_string(stp);    
+    lcd_pos(2,14);
+    lcdwrite_string(x);
+
+    EA=1;
+    EX0=1;
+    EX1=1;
+    IT0=1;
+    IT1=1;
+    while(1)
+    {
+      scan_key();
+      scan_key2();
+      out_put();
+    }                    
+}
+
+void scan_key()        //mode单键复用
+{
+   if(run==0 &amp;&amp; status==0)
+   {
+     run_flag=~run_flag;
+     if(run_flag==0)  //x模式
+     {
+            lcd_pos(2,14);
+            lcdwrite_string(x);
+     }
+     else             //y模式
+     {
+            lcd_pos(2,14);
+            lcdwrite_string(y);
+     }     
+     while(run==0);
+   }
+}
+
+void scan_key2()
+{
+    if(control_mode==0 &amp;&amp; status==0)
+   {
+     mode_flag=~mode_flag;
+     if(mode_flag==0)  //手动模式
+     {
+            lcd_pos(1,7);     
+            lcdwrite_string(ma);
+     }
+     else             //自动模式
+     {
+            lcd_pos(1,7);     
+            lcdwrite_string(au);
+     }     
+     while(control_mode==0);
+   }
+}
+
+void out_put()
+{
+    if(run_flag==0)        //X轴
+    {     
+         if(mode_flag==1)    //自动模态
+         {
+              if(forward==0 &amp;&amp; bk_flag==0 &amp;&amp; limit_1r_flag==0 )    
+              {
+                        fd_flag=~fd_flag;
+                    if(fd_flag==1)
+                    {
+                        lcd_pos(1,16);
+                        lcdwrite_zm(&#39; &#39;);
+                        lcd_pos(2,9);
+                        lcdwrite_string(fd);                    
+                        signal1=1;
+                        signal2=0;
+                        status=1;
+                    }
+                    else
+                    {
+                        lcd_pos(1,16);
+                        lcdwrite_zm(&#39; &#39;);
+                        lcd_pos(2,9);
+                        lcdwrite_string(stp);
+                        signal1=1;
+                        signal2=1;
+                        status=0;
+                    }
+                    while(forward==0);
+              }
+             if(backward==0 &amp;&amp; fd_flag==0 &amp;&amp; limit_1l_flag==0 )
+              {            
+                    bk_flag=~bk_flag;
+                    if(bk_flag==1)
+                    {
+                        lcd_pos(1,16);
+                        lcdwrite_zm(&#39; &#39;);
+                        lcd_pos(2,9);
+                        lcdwrite_string(bk);
+                        signal1=0;
+                        signal2=1;
+                        status=1;
+                    }
+                    else
+                    {
+                        lcd_pos(1,16);
+                        lcdwrite_zm(&#39; &#39;);
+                        lcd_pos(2,9);
+                        lcdwrite_string(stp);
+                        signal1=1;
+                        signal2=1;
+                        status=0;                              
+                    } 
+                    while(backward==0);
+              }    
+         }
+      else if(mode_flag==0)    //手动
+        {
+              if(forward==0 &amp;&amp; limit_1r_flag==0)    
+              {
+                    lcd_pos(1,16);
+                    lcdwrite_zm(&#39; &#39;);
+                    lcd_pos(2,9);
+                    lcdwrite_string(fd);                    
+                    signal1=1;
+                    signal2=0;
+                    status=1;
+                    limit_1l_flag=0;                
+              }
+             else if(backward==0 &amp;&amp; limit_1l_flag==0)
+              {
+                    lcd_pos(1,16);
+                    lcdwrite_zm(&#39; &#39;);
+                    lcd_pos(2,9);
+                    lcdwrite_string(bk);
+                    signal1=0;
+                    signal2=1;
+                    status=1;
+                    limit_1r_flag=0;                
+              }
+              else
+              {
+                    lcd_pos(1,16);
+                    lcdwrite_zm(&#39; &#39;);
+                    lcd_pos(2,9);
+                    lcdwrite_string(stp);
+                    signal1=1;
+                    signal2=1;
+                    status=0;
+              }
+        }
+    }
+    else if(run_flag==1)     //Y轴
+    {
+         if(mode_flag==1)    //自动模态
+         {
+              if(forward==0 &amp;&amp; bk_flag2==0)    
+              {
+                        fd_flag2=~fd_flag2;
+                    if(fd_flag2==1)
+                    {
+                        lcd_pos(1,16);
+                        lcdwrite_zm(&#39; &#39;);
+                        lcd_pos(2,9);
+                        lcdwrite_string(fd);                    
+                        signal3=1;
+                        signal4=0;
+                        status=1;
+                        limit_2l_flag=0;
+                    }
+                    else
+                    {
+                        lcd_pos(1,16);
+                        lcdwrite_zm(&#39; &#39;);
+                        lcd_pos(2,9);
+                        lcdwrite_string(stp);
+                        signal3=1;
+                        signal4=1;
+                        status=0;
+                    }
+                    while(forward==0);
+              }
+             if(backward==0 &amp;&amp; fd_flag2==0)
+              {            
+                    bk_flag2=~bk_flag2;
+                    if(bk_flag2==1 )
+                    {
+                        lcd_pos(1,16);
+                        lcdwrite_zm(&#39; &#39;);
+                        lcd_pos(2,9);
+                        lcdwrite_string(bk);
+                        signal3=0;
+                        signal4=1;
+                        status=1;
+                        limit_2r_flag=0;
+                    }
+                    else
+                    {
+                        lcd_pos(1,16);
+                        lcdwrite_zm(&#39; &#39;);
+                        lcd_pos(2,9);
+                        lcdwrite_string(stp);
+                        signal3=1;
+                        signal4=1;
+                        status=0;                              
+                    } 
+                    while(backward==0);
+              }    
+         }
+      else if(mode_flag==0)    //手动
+        {
+              if(forward==0 &amp;&amp; limit_2r_flag==0)    
+              {
+                    lcd_pos(1,16);
+                    lcdwrite_zm(&#39; &#39;);
+                    lcd_pos(2,9);
+                    lcdwrite_string(fd);                    
+                    signal3=1;
+                    signal4=0;
+                    status=1;                
+              }
+             else if(backward==0 &amp;&amp; limit_2l_flag==0)
+              {
+                    lcd_pos(1,16);
+                    lcdwrite_zm(&#39; &#39;);
+                    lcd_pos(2,9);
+                    lcdwrite_string(bk);
+                    signal3=0;
+                    signal4=1;
+                    status=1;                
+              }
+              else
+              {
+                    lcd_pos(1,16);
+                    lcdwrite_zm(&#39; &#39;);
+                    lcd_pos(2,9);
+                    lcdwrite_string(stp);
+                    signal3=1;
+                    signal4=1;
+                    status=0;
+              }
+        }
+    }
+}
+
+void int_int0() interrupt 0
+{
+    if(run_flag==0)           // X
+    {
+        if(mode_flag==0)
+        {
+           if(limit_1l==0)
+           {
+                limit_1l_flag=1;
+                limit_1r_flag=0;            
+                signal1=0;
+                signal2=0;
+
+                lcd_pos(1,16);
+                lcdwrite_zm(&#39;l&#39;);
+                lcd_pos(2,9);
+                lcdwrite_string(stp);
+                status=0;
+            }
+           else if(limit_1r==0)
+           {
+                   limit_1r_flag=1;
+                limit_1l_flag=0;            
+                signal1=0;
+                signal2=0;
+
+                lcd_pos(1,16);
+                lcdwrite_zm(&#39;r&#39;);
+                lcd_pos(2,9);
+                lcdwrite_string(stp);
+                status=0;
+           }                                                        
+        }
+          else
+          {    
+              if(limit_1l==0)
+           {
+                limit_1l_flag=1;
+                limit_1r_flag=0;
+                signal1=0;
+                signal2=0;                
+                fd_flag=0;
+                bk_flag=0;
+                lcd_pos(1,16);
+                lcdwrite_zm(&#39;l&#39;);
+                lcd_pos(2,9);
+                lcdwrite_string(stp);
+                status=0;
+            }
+           else if(limit_1r==0)
+           {
+                   limit_1r_flag=1;
+                limit_1l_flag=0;
+                signal1=0;
+                signal2=0;
+                fd_flag=0;
+                bk_flag=0;                                
+                lcd_pos(1,16);
+                lcdwrite_zm(&#39;r&#39;);
+                lcd_pos(2,9);
+                lcdwrite_string(stp);
+                status=0;
+           }   
+          }
+    }
+    else             // Y
+    {
+        if(mode_flag==0)       //手动
+        {
+              if(limit_2l==0)
+              {
+                    limit_2l_flag=1;
+                    limit_2r_flag=0;                                
+                    signal3=0;
+                    signal4=0;    
+                    lcd_pos(1,16);
+                    lcdwrite_zm(&#39;l&#39;);
+                    lcd_pos(2,9);
+                    lcdwrite_string(stp);
+                    status=0;
+              }
+              else if(limit_2r==0)
+              {
+                       limit_2r_flag=1;
+                    limit_2l_flag=0;            
+                    signal3=0;
+                    signal4=0;    
+                    lcd_pos(1,16);
+                    lcdwrite_zm(&#39;r&#39;);
+                    lcd_pos(2,9);
+                    lcdwrite_string(stp);
+                    status=0;
+              }                                                        
+        }
+        else              //自动
+        {    
+              if(limit_2l==0)
+           {
+                limit_2l_flag=1;
+                limit_2r_flag=0;
+                signal3=0;
+                signal4=0;                
+                fd_flag2=0;
+                bk_flag2=0;
+                lcd_pos(1,16);
+                lcdwrite_zm(&#39;l&#39;);
+                lcd_pos(2,9);
+                lcdwrite_string(stp);
+                status=0;
+            }
+           else if(limit_2r==0)
+           {
+                   limit_2r_flag=1;
+                limit_2l_flag=0;
+                signal3=0;
+                signal4=0;
+                fd_flag2=0;
+                bk_flag2=0;                                
+                lcd_pos(1,16);
+                lcdwrite_zm(&#39;r&#39;);
+                lcd_pos(2,9);
+                lcdwrite_string(stp);
+                status=0;
+           }   
+        }                
+    }        
+}
+</code></pre>
             </div>
             <hr/>
 
@@ -511,7 +942,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ilovea.asia/2020/04/04/hello-world/">http://ilovea.asia/2020/04/04/hello-world/</a>
+                    <a href="http://ilovea.asia/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA8/">http://ilovea.asia/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA8/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -548,7 +979,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/">
+                                    <span class="chip bg-color">单片机</span>
+                                </a>
+                            
+                                <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                                    <span class="chip bg-color">C语言</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -716,13 +1155,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/04/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD/">
+                <a href="/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA7/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="单片机作业：期中">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="单片机作业：7">
                         
-                        <span class="card-title">单片机作业：期中</span>
+                        <span class="card-title">单片机作业：7</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -733,7 +1172,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-04
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-03
                         </span>
                         <span class="publish-author">
                             
@@ -769,24 +1208,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/04/hexo1/">
+                <a href="/2020/04/02/hexo2/">
                     <div class="card-image">
                         
-                        <img src="https://i0.hdslb.com/bfs/album/bbc115fe65ad91c405cb0d37be9d27c8d4a5b1f3.jpg" class="responsive-img" alt="hexo1">
                         
-                        <span class="card-title">hexo1</span>
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="一篇文章多个categories">
+                        
+                        <span class="card-title">一篇文章多个categories</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            文章 Front-matter 介绍Front-matter 选项详解
-Front-matter 选项中的所有内容均为非必填的。但我仍然建议
+                            前言在很多情况下，我们希望在 Hexo 中写的一篇文章能够同时属于多个分类， 例如我写一篇 《Servlet笔记》，我既想将它放在 Java
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-02
                             </span>
                         <span class="publish-author">
                             
@@ -807,8 +1246,8 @@ Front-matter 选项中的所有内容均为非必填的。但我仍然建议
                         <span class="chip bg-color">hexo博客</span>
                     </a>
                     
-                    <a href="/tags/matery%E4%B8%BB%E9%A2%98/">
-                        <span class="chip bg-color">matery主题</span>
+                    <a href="/tags/next%E4%B8%BB%E9%A2%98/">
+                        <span class="chip bg-color">next主题</span>
                     </a>
                     
                 </div>
