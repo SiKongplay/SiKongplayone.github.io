@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zjt.ilovea.asia/"/>
-  <updated>2020-04-04T14:14:19.172Z</updated>
+  <updated>2020-04-05T05:31:02.854Z</updated>
   <id>https://zjt.ilovea.asia/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>HTTPS系列干货（一）</title>
+    <title>HTTPS系列干货</title>
     <link href="https://zjt.ilovea.asia/2020/04/04/HTTPS1/"/>
     <id>https://zjt.ilovea.asia/2020/04/04/HTTPS1/</id>
     <published>2020-04-04T13:40:15.000Z</published>
-    <updated>2020-04-04T14:14:19.172Z</updated>
+    <updated>2020-04-05T05:31:02.854Z</updated>
     
     <summary type="html">
     
@@ -49,10 +49,10 @@
   
   <entry>
     <title>单片机作业：期中</title>
-    <link href="https://zjt.ilovea.asia/2020/04/04/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD/"/>
-    <id>https://zjt.ilovea.asia/2020/04/04/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD/</id>
+    <link href="https://zjt.ilovea.asia/2020/04/04/singlechipmid/"/>
+    <id>https://zjt.ilovea.asia/2020/04/04/singlechipmid/</id>
     <published>2020-04-04T05:24:30.000Z</published>
-    <updated>2020-04-04T08:47:15.050Z</updated>
+    <updated>2020-04-05T05:32:23.230Z</updated>
     
     <summary type="html">
     
@@ -67,7 +67,7 @@
     </summary>
     
     
-      <category term="单片机作业" scheme="https://zjt.ilovea.asia/categories/%E5%8D%95%E7%89%87%E6%9C%BA%E4%BD%9C%E4%B8%9A/"/>
+      <category term="单片机" scheme="https://zjt.ilovea.asia/categories/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
     
       <category term="单片机" scheme="https://zjt.ilovea.asia/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
@@ -81,7 +81,7 @@
     <link href="https://zjt.ilovea.asia/2020/04/04/hexo1/"/>
     <id>https://zjt.ilovea.asia/2020/04/04/hexo1/</id>
     <published>2020-04-04T01:53:56.000Z</published>
-    <updated>2020-04-04T12:34:25.520Z</updated>
+    <updated>2020-04-05T05:29:49.389Z</updated>
     
     <summary type="html">
     
@@ -96,7 +96,7 @@
     </summary>
     
     
-      <category term="博客技术" scheme="https://zjt.ilovea.asia/categories/%E5%8D%9A%E5%AE%A2%E6%8A%80%E6%9C%AF/"/>
+      <category term="前端" scheme="https://zjt.ilovea.asia/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
       <category term="hexo博客" scheme="https://zjt.ilovea.asia/tags/hexo%E5%8D%9A%E5%AE%A2/"/>
@@ -107,10 +107,10 @@
   
   <entry>
     <title>单片机作业：7</title>
-    <link href="https://zjt.ilovea.asia/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA7/"/>
-    <id>https://zjt.ilovea.asia/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA7/</id>
+    <link href="https://zjt.ilovea.asia/2020/04/03/singlechip7/"/>
+    <id>https://zjt.ilovea.asia/2020/04/03/singlechip7/</id>
     <published>2020-04-03T14:08:33.000Z</published>
-    <updated>2020-04-04T12:04:36.720Z</updated>
+    <updated>2020-04-05T05:32:09.589Z</updated>
     
     <summary type="html">
     
@@ -125,7 +125,7 @@
     </summary>
     
     
-      <category term="单片机作业" scheme="https://zjt.ilovea.asia/categories/%E5%8D%95%E7%89%87%E6%9C%BA%E4%BD%9C%E4%B8%9A/"/>
+      <category term="单片机" scheme="https://zjt.ilovea.asia/categories/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
     
       <category term="单片机" scheme="https://zjt.ilovea.asia/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
@@ -136,10 +136,10 @@
   
   <entry>
     <title>单片机作业：8</title>
-    <link href="https://zjt.ilovea.asia/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA8/"/>
-    <id>https://zjt.ilovea.asia/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA8/</id>
+    <link href="https://zjt.ilovea.asia/2020/04/03/singlechip8/"/>
+    <id>https://zjt.ilovea.asia/2020/04/03/singlechip8/</id>
     <published>2020-04-03T11:24:08.000Z</published>
-    <updated>2020-04-04T12:04:43.984Z</updated>
+    <updated>2020-04-05T05:32:18.885Z</updated>
     
     <summary type="html">
     
@@ -154,7 +154,7 @@
     </summary>
     
     
-      <category term="单片机作业" scheme="https://zjt.ilovea.asia/categories/%E5%8D%95%E7%89%87%E6%9C%BA%E4%BD%9C%E4%B8%9A/"/>
+      <category term="单片机" scheme="https://zjt.ilovea.asia/categories/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
     
       <category term="单片机" scheme="https://zjt.ilovea.asia/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
@@ -168,7 +168,7 @@
     <link href="https://zjt.ilovea.asia/2020/04/02/hexo2/"/>
     <id>https://zjt.ilovea.asia/2020/04/02/hexo2/</id>
     <published>2020-04-02T12:21:19.000Z</published>
-    <updated>2020-04-04T11:08:53.022Z</updated>
+    <updated>2020-04-05T05:29:56.190Z</updated>
     
     <summary type="html">
     
@@ -183,7 +183,7 @@
     </summary>
     
     
-      <category term="博客技术" scheme="https://zjt.ilovea.asia/categories/%E5%8D%9A%E5%AE%A2%E6%8A%80%E6%9C%AF/"/>
+      <category term="前端" scheme="https://zjt.ilovea.asia/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
       <category term="hexo博客" scheme="https://zjt.ilovea.asia/tags/hexo%E5%8D%9A%E5%AE%A2/"/>
@@ -218,6 +218,314 @@
       <category term="hexo博客" scheme="https://zjt.ilovea.asia/tags/hexo%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="随笔" scheme="https://zjt.ilovea.asia/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>日志迁移</title>
+    <link href="https://zjt.ilovea.asia/2020/03/20/life0/"/>
+    <id>https://zjt.ilovea.asia/2020/03/20/life0/</id>
+    <published>2020-03-20T08:19:37.000Z</published>
+    <updated>2020-04-05T08:26:29.930Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;#日志迁移&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我将halo博客上的日志迁移到了hexo博客上&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;halo博客建立于 2020-02-29
+        
+      
+    
+    </summary>
+    
+    
+      <category term="随笔录" scheme="https://zjt.ilovea.asia/categories/%E9%9A%8F%E7%AC%94%E5%BD%95/"/>
+    
+    
+      <category term="halo博客" scheme="https://zjt.ilovea.asia/tags/halo%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="随笔" scheme="https://zjt.ilovea.asia/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="日志" scheme="https://zjt.ilovea.asia/tags/%E6%97%A5%E5%BF%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>有关git问题（出坑）</title>
+    <link href="https://zjt.ilovea.asia/2020/03/18/blog1/"/>
+    <id>https://zjt.ilovea.asia/2020/03/18/blog1/</id>
+    <published>2020-03-18T06:53:39.000Z</published>
+    <updated>2020-04-05T06:58:21.636Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;git在使用时会出错。&quot;&gt;&lt;a href=&quot;#git在使用时会出错。&quot; class=&quot;headerlink&quot; title=&quot;git在使用时会出错。&quot;&gt;&lt;/a&gt;git在使用时会出错。&lt;/h2&gt;&lt;p&gt;看了好多资料终于搞定了git
+        
+      
+    
+    </summary>
+    
+    
+      <category term="后端" scheme="https://zjt.ilovea.asia/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="后端" scheme="https://zjt.ilovea.asia/tags/%E5%90%8E%E7%AB%AF/"/>
+    
+      <category term="git问题" scheme="https://zjt.ilovea.asia/tags/git%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网页常用分享代码大全(前端必备)</title>
+    <link href="https://zjt.ilovea.asia/2020/03/17/code1/"/>
+    <id>https://zjt.ilovea.asia/2020/03/17/code1/</id>
+    <published>2020-03-17T06:48:18.000Z</published>
+    <updated>2020-04-05T06:49:33.324Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h6 id=&quot;1、新浪微博&quot;&gt;&lt;a href=&quot;#1、新浪微博&quot; class=&quot;headerlink&quot; title=&quot;1、新浪微博&quot;&gt;&lt;/a&gt;1、新浪微博&lt;/h6&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://zjt.ilovea.asia/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="前端" scheme="https://zjt.ilovea.asia/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="网页代码" scheme="https://zjt.ilovea.asia/tags/%E7%BD%91%E9%A1%B5%E4%BB%A3%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>普通简单命令行的整理</title>
+    <link href="https://zjt.ilovea.asia/2020/03/16/server1/"/>
+    <id>https://zjt.ilovea.asia/2020/03/16/server1/</id>
+    <published>2020-03-16T06:39:43.000Z</published>
+    <updated>2020-04-05T06:46:11.061Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;普通命令行代码使用&quot;&gt;&lt;a href=&quot;#普通命令行代码使用&quot; class=&quot;headerlink&quot; title=&quot;普通命令行代码使用&quot;&gt;&lt;/a&gt;普通命令行代码使用&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;## pwd : Windows环境下，检查你当前的位置；
+##
+        
+      
+    
+    </summary>
+    
+    
+      <category term="后端" scheme="https://zjt.ilovea.asia/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="后端" scheme="https://zjt.ilovea.asia/tags/%E5%90%8E%E7%AB%AF/"/>
+    
+      <category term="命令行" scheme="https://zjt.ilovea.asia/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>手机电脑免费互传工具汇总</title>
+    <link href="https://zjt.ilovea.asia/2020/03/15/function/"/>
+    <id>https://zjt.ilovea.asia/2020/03/15/function/</id>
+    <published>2020-03-15T06:33:08.000Z</published>
+    <updated>2020-04-05T06:38:24.110Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;互传工具汇总&quot;&gt;&lt;a href=&quot;#互传工具汇总&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="分享推荐" scheme="https://zjt.ilovea.asia/categories/%E5%88%86%E4%BA%AB%E6%8E%A8%E8%8D%90/"/>
+    
+    
+      <category term="工具" scheme="https://zjt.ilovea.asia/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="互传工具" scheme="https://zjt.ilovea.asia/tags/%E4%BA%92%E4%BC%A0%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>单个按键实现单击、双击、长按的实现</title>
+    <link href="https://zjt.ilovea.asia/2020/03/14/singlechip7-5/"/>
+    <id>https://zjt.ilovea.asia/2020/03/14/singlechip7-5/</id>
+    <published>2020-03-14T05:49:05.000Z</published>
+    <updated>2020-04-05T05:57:30.195Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;单片机&quot;&gt;&lt;a href=&quot;#单片机&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="单片机" scheme="https://zjt.ilovea.asia/categories/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+    
+      <category term="单片机" scheme="https://zjt.ilovea.asia/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
+    
+      <category term="作业" scheme="https://zjt.ilovea.asia/tags/%E4%BD%9C%E4%B8%9A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>页面访问量统计以及代码高亮</title>
+    <link href="https://zjt.ilovea.asia/2020/03/13/blog0/"/>
+    <id>https://zjt.ilovea.asia/2020/03/13/blog0/</id>
+    <published>2020-03-13T05:41:02.000Z</published>
+    <updated>2020-04-05T05:43:10.852Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;页面访问量统计&quot;&gt;&lt;a href=&quot;#页面访问量统计&quot; class=&quot;headerlink&quot; title=&quot;页面访问量统计&quot;&gt;&lt;/a&gt;页面访问量统计&lt;/h1&gt;&lt;h2 id=&quot;1-在head中插入代码&quot;&gt;&lt;a href=&quot;#1-在head中插入代码&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://zjt.ilovea.asia/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="代码" scheme="https://zjt.ilovea.asia/tags/%E4%BB%A3%E7%A0%81/"/>
+    
+      <category term="访问量" scheme="https://zjt.ilovea.asia/tags/%E8%AE%BF%E9%97%AE%E9%87%8F/"/>
+    
+      <category term="前端" scheme="https://zjt.ilovea.asia/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>视频，音频，博客代码</title>
+    <link href="https://zjt.ilovea.asia/2020/03/12/media1/"/>
+    <id>https://zjt.ilovea.asia/2020/03/12/media1/</id>
+    <published>2020-03-12T05:21:00.000Z</published>
+    <updated>2020-04-05T06:14:54.377Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;第一个视频&quot;&gt;&lt;a href=&quot;#第一个视频&quot; class=&quot;headerlink&quot; title=&quot;第一个视频&quot;&gt;&lt;/a&gt;第一个视频&lt;/h2&gt;&lt;center&gt; &lt;iframe
+        
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://zjt.ilovea.asia/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="前端" scheme="https://zjt.ilovea.asia/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="视频" scheme="https://zjt.ilovea.asia/tags/%E8%A7%86%E9%A2%91/"/>
+    
+      <category term="音频" scheme="https://zjt.ilovea.asia/tags/%E9%9F%B3%E9%A2%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>无广告搜索引擎</title>
+    <link href="https://zjt.ilovea.asia/2020/03/11/searchengines1/"/>
+    <id>https://zjt.ilovea.asia/2020/03/11/searchengines1/</id>
+    <published>2020-03-11T06:11:38.000Z</published>
+    <updated>2020-04-05T06:51:57.350Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;最近，一个名叫 Magi 的搜索引擎成了重点关注对象，据称这个搜索引擎和我们常见的搜索引擎很不一样，有一种程序员们钟爱的 X 冷淡风格。于是我们打开 Magi 看了看。确实，这个页面看着就很让人舒爽。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="分享推荐" scheme="https://zjt.ilovea.asia/categories/%E5%88%86%E4%BA%AB%E6%8E%A8%E8%8D%90/"/>
+    
+    
+      <category term="搜索引擎" scheme="https://zjt.ilovea.asia/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
+    
+      <category term="推荐" scheme="https://zjt.ilovea.asia/tags/%E6%8E%A8%E8%8D%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>服务器查看磁盘信息指令</title>
+    <link href="https://zjt.ilovea.asia/2020/03/10/aliyun1/"/>
+    <id>https://zjt.ilovea.asia/2020/03/10/aliyun1/</id>
+    <published>2020-03-10T05:04:20.000Z</published>
+    <updated>2020-04-05T05:38:11.286Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;#阿里云&lt;br&gt;您是否遇到过这种情况，数据盘空间富足，系统盘无缘无故感觉就满了？一直在找问题？由此导致的本机mysql无法启动？&lt;/p&gt;
+&lt;p&gt;等一系列坑爹的问题！输入：df -h，我们看看磁盘使用情况。&lt;/p&gt;
+&lt;p&gt;40G空间  使用了2.6G 
+        
+      
+    
+    </summary>
+    
+    
+      <category term="后端" scheme="https://zjt.ilovea.asia/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="阿里云" scheme="https://zjt.ilovea.asia/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+      <category term="服务器" scheme="https://zjt.ilovea.asia/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+      <category term="后端" scheme="https://zjt.ilovea.asia/tags/%E5%90%8E%E7%AB%AF/"/>
     
   </entry>
   
@@ -306,206 +614,6 @@
       <category term="搜书网站" scheme="https://zjt.ilovea.asia/tags/%E6%90%9C%E4%B9%A6%E7%BD%91%E7%AB%99/"/>
     
       <category term="电子书" scheme="https://zjt.ilovea.asia/tags/%E7%94%B5%E5%AD%90%E4%B9%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>除了Halo，个人博客网站还有6个免费开源博客程序CMS系统</title>
-    <link href="https://zjt.ilovea.asia/2020/03/06/halo3/"/>
-    <id>https://zjt.ilovea.asia/2020/03/06/halo3/</id>
-    <published>2020-03-06T01:48:44.000Z</published>
-    <updated>2020-04-05T01:50:31.133Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;上次说过的Halo&quot;&gt;&lt;a href=&quot;#上次说过的Halo&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="博客技术" scheme="https://zjt.ilovea.asia/categories/%E5%8D%9A%E5%AE%A2%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="halo博客" scheme="https://zjt.ilovea.asia/tags/halo%E5%8D%9A%E5%AE%A2/"/>
-    
-      <category term="CMS系统" scheme="https://zjt.ilovea.asia/tags/CMS%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Halo博客搭建</title>
-    <link href="https://zjt.ilovea.asia/2020/03/05/halo2/"/>
-    <id>https://zjt.ilovea.asia/2020/03/05/halo2/</id>
-    <published>2020-03-05T01:43:19.000Z</published>
-    <updated>2020-04-05T01:54:28.430Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;更新：Halo 已经更新到了 1.0 版本，截止发布修改时，最新版本为 1.0.3，最新的安装方式推荐查看官方文档。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Halo 项目地址：&lt;a href=&quot;https://github.com/ruibaby/halo&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="博客技术" scheme="https://zjt.ilovea.asia/categories/%E5%8D%9A%E5%AE%A2%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="halo博客" scheme="https://zjt.ilovea.asia/tags/halo%E5%8D%9A%E5%AE%A2/"/>
-    
-      <category term="simple bootstrap主题" scheme="https://zjt.ilovea.asia/tags/simple-bootstrap%E4%B8%BB%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Halo-博客主题系统的实现</title>
-    <link href="https://zjt.ilovea.asia/2020/03/04/halo1/"/>
-    <id>https://zjt.ilovea.asia/2020/03/04/halo1/</id>
-    <published>2020-03-04T01:38:18.000Z</published>
-    <updated>2020-04-05T01:42:33.271Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;halo博客系统&quot;&gt;&lt;a href=&quot;#halo博客系统&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="博客技术" scheme="https://zjt.ilovea.asia/categories/%E5%8D%9A%E5%AE%A2%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="halo博客" scheme="https://zjt.ilovea.asia/tags/halo%E5%8D%9A%E5%AE%A2/"/>
-    
-      <category term="simple bootstrap主题" scheme="https://zjt.ilovea.asia/tags/simple-bootstrap%E4%B8%BB%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>单片机原理与接口技术</title>
-    <link href="https://zjt.ilovea.asia/2020/03/03/%E5%8D%95%E7%89%87%E6%9C%BA0/"/>
-    <id>https://zjt.ilovea.asia/2020/03/03/%E5%8D%95%E7%89%87%E6%9C%BA0/</id>
-    <published>2020-03-03T01:30:08.000Z</published>
-    <updated>2020-04-05T01:36:28.168Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;第一讲&quot;&gt;&lt;a href=&quot;#第一讲&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="单片机资料" scheme="https://zjt.ilovea.asia/categories/%E5%8D%95%E7%89%87%E6%9C%BA%E8%B5%84%E6%96%99/"/>
-    
-    
-      <category term="单片机" scheme="https://zjt.ilovea.asia/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
-    
-      <category term="C语言" scheme="https://zjt.ilovea.asia/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GO语言（学习1）</title>
-    <link href="https://zjt.ilovea.asia/2020/03/01/GO1/"/>
-    <id>https://zjt.ilovea.asia/2020/03/01/GO1/</id>
-    <published>2020-03-01T01:09:00.000Z</published>
-    <updated>2020-04-05T01:23:32.009Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;第一天学习&quot;&gt;&lt;a href=&quot;#第一天学习&quot; class=&quot;headerlink&quot; title=&quot;第一天学习&quot;&gt;&lt;/a&gt;第一天学习&lt;/h2&gt;&lt;p&gt;&lt;img
-        
-      
-    
-    </summary>
-    
-    
-      <category term="GO语言" scheme="https://zjt.ilovea.asia/categories/GO%E8%AF%AD%E8%A8%80/"/>
-    
-    
-      <category term="go语言" scheme="https://zjt.ilovea.asia/tags/go%E8%AF%AD%E8%A8%80/"/>
-    
-      <category term="学习" scheme="https://zjt.ilovea.asia/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Markdown 教程</title>
-    <link href="https://zjt.ilovea.asia/2020/02/29/markdown1/"/>
-    <id>https://zjt.ilovea.asia/2020/02/29/markdown1/</id>
-    <published>2020-02-29T12:21:19.000Z</published>
-    <updated>2020-04-04T12:36:23.169Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Markdown-标题&quot;&gt;&lt;a href=&quot;#Markdown-标题&quot; class=&quot;headerlink&quot; title=&quot;Markdown 标题&quot;&gt;&lt;/a&gt;Markdown 标题&lt;/h2&gt;&lt;p&gt;Markdown 标题有两种格式。&lt;/p&gt;
-&lt;p&gt;###1、使用
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Markdown应用" scheme="https://zjt.ilovea.asia/categories/Markdown%E5%BA%94%E7%94%A8/"/>
-    
-    
-      <category term="博客" scheme="https://zjt.ilovea.asia/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-      <category term="markdown" scheme="https://zjt.ilovea.asia/tags/markdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://zjt.ilovea.asia/2020/02/28/hello-world/"/>
-    <id>https://zjt.ilovea.asia/2020/02/28/hello-world/</id>
-    <published>2020-02-28T13:40:15.000Z</published>
-    <updated>2020-04-04T13:58:13.403Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
-        
-      
-    
-    </summary>
-    
-    
     
   </entry>
   

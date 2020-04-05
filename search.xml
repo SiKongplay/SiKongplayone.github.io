@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>HTTPS系列干货（一）</title>
+      <title>HTTPS系列干货</title>
       <link href="/2020/04/04/HTTPS1/"/>
       <url>/2020/04/04/HTTPS1/</url>
       
@@ -34,15 +34,15 @@
     
     <entry>
       <title>单片机作业：期中</title>
-      <link href="/2020/04/04/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD/"/>
-      <url>/2020/04/04/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD/</url>
+      <link href="/2020/04/04/singlechipmid/"/>
+      <url>/2020/04/04/singlechipmid/</url>
       
         <content type="html"><![CDATA[<h2 id="功能要求："><a href="#功能要求：" class="headerlink" title="功能要求："></a>功能要求：</h2><p>1.控制某运动工作台沿轴向运动，有前进和后退两个方向。</p><p>2.控制系统设计有三个按钮：一个是模式切换按钮，一个是“foward”按键，一个是“backward”按键。 </p><p>3.工作台两端设计各设计安排一个限位传感器。</p><p>4.系统有2种控制模式： </p><p>一种是点动控制，即“foward”按键按下时工作台前进动作，放手即停；“backward”按键按下时工作台后退动作，放手即停。 </p><p>第二种是自动动控制，即“foward”工作台前进/停止复用按键；“backward”工作台后退/停止复用按键。 </p><p>第三种是往复循环模式，即自动在两限位之间循环动作，“foward”按键作为启动按键，按下后工作台前进动作，遇到右侧限位自动反转运行，直到遇到左侧限位，然后又反向运行，如此往复运动，“backward”按键作为停止按键，按下后循环运动停止。</p><p>5.液晶显示系统工作状态，界面自拟。</p><p>6.电机在运动时不得切换控制模式。</p><h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>这题的主要难点就是怎么将一颗按钮用于三种用途？<br>目前的想法是将原有的一颗键上的flag用一个循环，使之有三种功能：例如flag=0时干什么；flag=1时做什么；flag=2时做什么；这样就需要一个num来做循环，num++来实现，0到2的循环；<br>这就有两种方式了，如下：</p><pre><code>第一种：for(num==0 ;num&lt;3;num++)第二种：while(1)        {            num++;            if(num=3)            num=0;        }</code></pre><p>按照上面的两种方式就可以解决掉所有问题了，其余的就自己看代码吧！</p><h2 id="具体过程代码："><a href="#具体过程代码：" class="headerlink" title="具体过程代码："></a>具体过程代码：</h2><pre><code>#include&lt;reg51.h&gt;#include&lt;1602lcd.h&gt;sbit signal1=P1^0; sbit signal2=P1^1;  // control portsbit forward=P1^2;sbit backward=P1^3;  //  two keyssbit control_mode=P1^4;sbit limit_l=P3^2;sbit limit_r=P3^3;unsigned char md[]={&quot;mode:&quot;};       //modeunsigned char st[]={&quot;status:&quot;};       //状态unsigned char au[]={&quot;auto&quot;};unsigned char ma[]={&quot;manu&quot;};unsigned char fd[]={&quot;fowd&quot;};unsigned char stp[]={&quot;stop&quot;};unsigned char bk[]={&quot;back&quot;};unsigned char lp[]={&quot;loop&quot;};int num;bit status=0;       //status=1 表示在动   =0  停止bit mode_flag;bit fwd_flag;bit bak_flag;bit limit_l_flag;bit limit_r_flag;bit limit_flag;void scan_key();void out_put();void check_limit();void check_limit1();void main(){    lcd_init();    lcd_pos(1,1);    lcdwrite_string(md);    lcd_pos(1,7);         lcdwrite_string(ma);    lcd_pos(2,1);    lcdwrite_string(st);    lcd_pos(2,9);    lcdwrite_string(stp);    while(1)    {      scan_key();      out_put();    }}void scan_key()        //z单键复用{        if(control_mode==0 &amp;&amp; status==0)    {        num++;        if(num==3)                    num=0;             while(control_mode==0);        if(num==0)         //手动        {            lcd_pos(1,7);            lcdwrite_string(ma);                }        if(num==1)         //自动        {            lcd_pos(1,7);            lcdwrite_string(au);                }        if(num==2)            //循环        {                    lcd_pos(1,7);            lcdwrite_string(lp);                }    }}void out_put(){     if(num==1)     //auto     {          if(forward==0 &amp;&amp; bak_flag==0 &amp;&amp; limit_r_flag==0 )          {            fwd_flag=~fwd_flag;            if(fwd_flag==1)            {                lcd_pos(1,16);                lcdwrite_zm(&#39; &#39;);                lcd_pos(2,9);                lcdwrite_string(fd);                signal1=1;                signal2=0;                status=1;                limit_l_flag=0;            }            else            {                lcd_pos(1,16);                lcdwrite_zm(&#39; &#39;);                lcd_pos(2,9);                lcdwrite_string(stp);                signal1=1;                signal2=1;                status=0;                                          }             while(forward==0);          }         else if(backward==0 &amp;&amp; fwd_flag==0 &amp;&amp; limit_l_flag==0 )          {            bak_flag=~bak_flag;            if(bak_flag==1)            {                lcd_pos(1,16);                lcdwrite_zm(&#39; &#39;);                lcd_pos(2,9);                lcdwrite_string(bk);                signal1=0;                signal2=1;                status=1;                limit_r_flag=0;            }            else            {                lcd_pos(1,16);                lcdwrite_zm(&#39; &#39;);                lcd_pos(2,9);                lcdwrite_string(stp);                signal1=1;                signal2=1;                status=0;                                          }           while(backward==0);          }          check_limit();         }  else if(num==0)         //manu    {          if(forward==0 &amp;&amp; limit_r_flag==0)          {            lcd_pos(1,16);            lcdwrite_zm(&#39; &#39;);            lcd_pos(2,9);            lcdwrite_string(fd);            signal1=1;            signal2=0;            status=1;            limit_l_flag=0;                      }         else if(backward==0 &amp;&amp; limit_l_flag==0)          {            lcd_pos(1,16);            lcdwrite_zm(&#39; &#39;);            lcd_pos(2,9);            lcdwrite_string(bk);            signal1=0;            signal2=1;            status=1;            limit_r_flag=0;          }          else          {            lcd_pos(1,16);            lcdwrite_zm(&#39; &#39;);            lcd_pos(2,9);            lcdwrite_string(stp);            signal1=1;            signal2=1;            status=0;          }          check_limit();    }    else if(num==2)    {            if(forward==0 &amp;&amp; status==0)        {            lcd_pos(1,16);            lcdwrite_zm(&#39; &#39;);            lcd_pos(2,9);            lcdwrite_string(fd);            signal1=1;            signal2=0;            status=1;            if(limit_r==0)            {                limit_flag=1;                signal1=0;                signal2=1;                status=1;            //有极限，触发后退                lcd_pos(1,16);                lcdwrite_zm(&#39;r&#39;);                lcd_pos(2,9);                lcdwrite_string(bk);                if(limit_l==0)                {                    limit_flag=1;                    signal1=1;                    signal2=0;                    status=1;                //左极限，触发前进                    lcd_pos(1,16);                    lcdwrite_zm(&#39;l&#39;);                    lcd_pos(2,9);                    lcdwrite_string(fd);                }            }        }        else if(backward==0)        {            lcd_pos(1,16);            lcdwrite_zm(&#39; &#39;);            lcd_pos(2,9);            lcdwrite_string(stp);            signal1=1;            signal2=1;            status=0;        }        check_limit1();    }}void check_limit(){    if(limit_l==0)    {        limit_l_flag=1; //左限制        signal1=1;        signal2=1;        status=0;        fwd_flag=0;        bak_flag=0;        lcd_pos(1,16);        lcdwrite_zm(&#39;l&#39;);        lcd_pos(2,9);        lcdwrite_string(stp);    }    if(limit_r==0)    {        limit_r_flag=1;     //右限制        signal1=1;        signal2=1;        status=0;        fwd_flag=0;        bak_flag=0;        lcd_pos(1,16);        lcdwrite_zm(&#39;r&#39;);        lcd_pos(2,9);        lcdwrite_string(stp);            }}void check_limit1(){    if(limit_l==0)    {        signal1=1;        signal2=0;        status=1;    //左极限，触发前进        lcd_pos(1,16);        lcdwrite_zm(&#39;l&#39;);        lcd_pos(2,9);        lcdwrite_string(fd);    }    if(limit_r==0)    {        signal1=0;        signal2=1;        status=1;    //右极限，触发后退        lcd_pos(1,16);        lcdwrite_zm(&#39;r&#39;);        lcd_pos(2,9);        lcdwrite_string(bk);            }}</code></pre>]]></content>
       
       
       <categories>
           
-          <category> 单片机作业 </category>
+          <category> 单片机 </category>
           
       </categories>
       
@@ -69,7 +69,7 @@
       
       <categories>
           
-          <category> 博客技术 </category>
+          <category> 前端 </category>
           
       </categories>
       
@@ -88,15 +88,15 @@
     
     <entry>
       <title>单片机作业：7</title>
-      <link href="/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA7/"/>
-      <url>/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA7/</url>
+      <link href="/2020/04/03/singlechip7/"/>
+      <url>/2020/04/03/singlechip7/</url>
       
         <content type="html"><![CDATA[<h2 id="课后项目设计功能要求："><a href="#课后项目设计功能要求：" class="headerlink" title="课后项目设计功能要求："></a>课后项目设计功能要求：</h2><p>1.控制某运动工作台沿轴向运动，有前进和后退两个方向。</p><p>2.控制系统设计有三个按钮：一个是模式切换按钮，一个是“foward”按键，一个是“backward”按键。</p><p>3.工作台两端设计各设计安排一个限位传感器。</p><p>4.系统有2种控制模式：</p><p>一种是点动控制，即“foward”按键按下时工作台前进动作，放手即停；“backward”按键按下时工作台后退动作，放手即停。</p><p>另一种是：自动在两限位之间循环动作，即“foward”按键作为启动按键，按下后工作台前进动作，遇到右侧限位自动反转运行，直到遇到左侧限位，然后又反向运行，如此往复运动，“backward”按键作为停止按键，按下后循环运动停止。</p><p>5.液晶显示系统工作状态，界面自拟。</p><p>6.电机在运动时不得切换控制模式。</p><p>7.触碰到限位开关时，要求用中断功能实现。</p><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><blockquote><p>刚刚看到有个同学居然还要我把上次的作业也发一下，那我就直接发一下了。<br>章某人给钱！最后附有二维码！</p></blockquote><h2 id="直接上代码："><a href="#直接上代码：" class="headerlink" title="直接上代码："></a>直接上代码：</h2><pre><code>#include&lt;reg51.h&gt;#include&lt;1602lcd.h&gt;sbit signal1=P1^0;sbit signal2=P1^1;sbit forward=P1^2;sbit backward=P1^3;sbit control_mode=P1^4;unsigned char md[]={&quot;mode:&quot;};       //modeunsigned char st[]={&quot;status:&quot;};       //状态unsigned char au[]={&quot;auto&quot;};unsigned char ma[]={&quot;manu&quot;};unsigned char fd[]={&quot;fowd&quot;};unsigned char stp[]={&quot;stop&quot;};unsigned char bk[]={&quot;back&quot;};bit mode_flag;bit status;bit limit_flag;void scan_key();void output();void main(){//中断    EA=1;    EX0=1;    EX1=1;    IT0=1;    IT1=1;//显示器    lcd_init();    lcd_pos(1,1);    lcdwrite_string(md);    lcd_pos(1,7);         lcdwrite_string(ma);    lcd_pos(2,1);    lcdwrite_string(st);    lcd_pos(2,9);    lcdwrite_string(stp);    while(1)    {        scan_key();        output();    }}void scan_key(){        if(control_mode==0 &amp;&amp; status==0)    {        mode_flag=~mode_flag;        while(control_mode==0);        //加显示器的内容        if(mode_flag==0)  //手动模式         {            lcd_pos(1,7);                 lcdwrite_string(ma);         }         else             //自动模式         {            lcd_pos(1,7);                 lcdwrite_string(au);         }            }        }void output(){    if(mode_flag==1)         // auto    {        if(forward==0 &amp;&amp; status==0)        {            lcd_pos(1,16);            lcdwrite_zm(&#39; &#39;);            lcd_pos(2,9);            lcdwrite_string(fd);            signal1=1;            signal2=0;            status=1;        }        else if(backward==0)        {            lcd_pos(1,16);            lcdwrite_zm(&#39; &#39;);            lcd_pos(2,9);            lcdwrite_string(stp);            signal1=1;            signal2=1;            status=0;        }                }    else if(mode_flag==0)     // manu    {        if(forward==0 &amp;&amp; limit_flag==0)        {            lcd_pos(1,16);            lcdwrite_zm(&#39; &#39;);            lcd_pos(2,9);            lcdwrite_string(fd);            signal1=1;            signal2=0;            status=1;        }        else if(backward==0 &amp;&amp; limit_flag==0)        {            lcd_pos(1,16);            lcdwrite_zm(&#39; &#39;);            lcd_pos(2,9);            lcdwrite_string(bk);            signal1=0;            signal2=1;            status=1;        }        else        {            lcd_pos(1,16);            lcdwrite_zm(&#39; &#39;);            lcd_pos(2,9);            lcdwrite_string(stp);            signal1=1;            signal2=1;            status=0;        }    }}void check0() interrupt 0{    limit_flag=1;    signal1=1;    signal2=0;    status=1;//左极限，触发前进    lcd_pos(1,16);    lcdwrite_zm(&#39;l&#39;);    lcd_pos(2,9);    lcdwrite_string(fd);    } void check1() interrupt 2{    limit_flag=1;    signal1=0;    signal2=1;    status=1;//有极限，触发后退    lcd_pos(1,16);    lcdwrite_zm(&#39;r&#39;);    lcd_pos(2,9);    lcdwrite_string(bk);}</code></pre>]]></content>
       
       
       <categories>
           
-          <category> 单片机作业 </category>
+          <category> 单片机 </category>
           
       </categories>
       
@@ -115,15 +115,15 @@
     
     <entry>
       <title>单片机作业：8</title>
-      <link href="/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA8/"/>
-      <url>/2020/04/03/%E5%8D%95%E7%89%87%E6%9C%BA8/</url>
+      <link href="/2020/04/03/singlechip8/"/>
+      <url>/2020/04/03/singlechip8/</url>
       
         <content type="html"><![CDATA[<h2 id="老师给的要求"><a href="#老师给的要求" class="headerlink" title="老师给的要求"></a>老师给的要求</h2><p>1.控制运动工作台的两个电机均可沿轴向运动，有前进和后退两个方向。<br>2.每轴的电机都有2种控制模式：<br>一种是点动控制，即“foward”按键按下时工作台前进动作，放手即停；“backward”按键按下时工作台后退动作，放手即停。<br>另一种是：模态动作控制，即只要“foward”按键按下，工作台即发生前进动作，放手后依然保持前进动作，除非机床接到新的控制命令；即只要“backward”按键按下，工作台即发生后退动作，放手后依然保持后退动作，除非机床接到新的控制命令。<br>3.控制系统设计有四个按钮：一个是运动轴电机选择的切换按键，一个是模式切换按钮，一个是“foward”按键，一个是“backward”按键。 k1-k4这四个按键可由设计者根据设计功能要求自行分配。<br>3.工作台的每个运动轴两端各设计安排一个限位传感器，采用外部中断扩展方式设计，电路原理如图所示。<br>4.液晶显示系统工作状态，界面自拟。<br>5.电机在运动时不得切换控制模式。<br>6.触碰到限位开关时，要求用中断功能实现停止电机动作，并做液晶报警提醒。<br>7.其他个性化功能自拟。</p><h2 id="写代码过程"><a href="#写代码过程" class="headerlink" title="写代码过程"></a>写代码过程</h2><p>将原来的程序进行加工，现在只有一个控制端口，但是要实现4种控制，这种和上次的很想但是又有变化，将原来的设计重新做一下，再将新的信号接入，这样就可以了。<br>在运行过程中出现了很多问题，在设计之前以为就是小小的改变了一下，这次的代码量明显比之前多了很多，所以重新设计的量也大了。一开始出现了按钮按下电机可以转动，但是相互锁的只有一次机会，我找了好几久才发现，原来是一次限位之后没有释放第二次的机会，最后我还是解决了；还有的就是代码的量太大了，有点乱，我都搞混了，以后写代码后面必须加一些可以区分的标志物，这样方便修改和编辑。</p><p>这次的代码练习我做了一个下午，为什么时间那么长呢？是因为我找错误找了好久，本就已经找到代码错在哪里了，但是还是搞了那么久，不知道为什么就是有点乱，以后我知道了，在写代码后面必须要注释一些东西加以区分，这样方便以后修改和编辑。</p><h2 id="单片机代码："><a href="#单片机代码：" class="headerlink" title="单片机代码："></a>单片机代码：</h2><pre><code>#include&lt;reg51.h&gt;#include&lt;1602lcd.h&gt;sbit signal1=P1^0; sbit signal2=P1^1; sbit signal3=P1^7;sbit signal4=P2^7;    // control portsbit forward=P1^2;    sbit backward=P1^3; sbit run=P1^5;      //  four keyssbit control_mode=P1^4;sbit limit_1l=P2^3;        sbit limit_1r=P2^4;sbit limit_2l=P2^5;        sbit limit_2r=P2^6;     //four limits  unsigned char md[]={&quot;mode:&quot;};       unsigned char st[]={&quot;status:&quot;};       //状态unsigned char au[]={&quot;auto&quot;};unsigned char ma[]={&quot;manu&quot;};unsigned char fd[]={&quot;fowd&quot;};unsigned char bk[]={&quot;back&quot;};unsigned char stp[]={&quot;stop&quot;};unsigned char x[]={&quot;x&quot;};unsigned char y[]={&quot;y&quot;};bit status=0;       //status=1 动 0 停止bit mode_flag;bit fd_flag;bit bk_flag;bit run_flag;bit fd_flag2;bit bk_flag2;bit limit_1l_flag;  //限位标志位bit limit_1r_flag;bit limit_2l_flag;bit limit_2r_flag;void scan_key();void out_put();void scan_key2();void main(){    lcd_init();    lcd_pos(1,1);    lcdwrite_string(md);    lcd_pos(1,7);         lcdwrite_string(ma);    lcd_pos(2,1);    lcdwrite_string(st);    lcd_pos(2,9);    lcdwrite_string(stp);        lcd_pos(2,14);    lcdwrite_string(x);    EA=1;    EX0=1;    EX1=1;    IT0=1;    IT1=1;    while(1)    {      scan_key();      scan_key2();      out_put();    }                    }void scan_key()        //mode单键复用{   if(run==0 &amp;&amp; status==0)   {     run_flag=~run_flag;     if(run_flag==0)  //x模式     {            lcd_pos(2,14);            lcdwrite_string(x);     }     else             //y模式     {            lcd_pos(2,14);            lcdwrite_string(y);     }          while(run==0);   }}void scan_key2(){    if(control_mode==0 &amp;&amp; status==0)   {     mode_flag=~mode_flag;     if(mode_flag==0)  //手动模式     {            lcd_pos(1,7);                 lcdwrite_string(ma);     }     else             //自动模式     {            lcd_pos(1,7);                 lcdwrite_string(au);     }          while(control_mode==0);   }}void out_put(){    if(run_flag==0)        //X轴    {              if(mode_flag==1)    //自动模态         {              if(forward==0 &amp;&amp; bk_flag==0 &amp;&amp; limit_1r_flag==0 )                  {                        fd_flag=~fd_flag;                    if(fd_flag==1)                    {                        lcd_pos(1,16);                        lcdwrite_zm(&#39; &#39;);                        lcd_pos(2,9);                        lcdwrite_string(fd);                                            signal1=1;                        signal2=0;                        status=1;                    }                    else                    {                        lcd_pos(1,16);                        lcdwrite_zm(&#39; &#39;);                        lcd_pos(2,9);                        lcdwrite_string(stp);                        signal1=1;                        signal2=1;                        status=0;                    }                    while(forward==0);              }             if(backward==0 &amp;&amp; fd_flag==0 &amp;&amp; limit_1l_flag==0 )              {                                bk_flag=~bk_flag;                    if(bk_flag==1)                    {                        lcd_pos(1,16);                        lcdwrite_zm(&#39; &#39;);                        lcd_pos(2,9);                        lcdwrite_string(bk);                        signal1=0;                        signal2=1;                        status=1;                    }                    else                    {                        lcd_pos(1,16);                        lcdwrite_zm(&#39; &#39;);                        lcd_pos(2,9);                        lcdwrite_string(stp);                        signal1=1;                        signal2=1;                        status=0;                                                  }                     while(backward==0);              }             }      else if(mode_flag==0)    //手动        {              if(forward==0 &amp;&amp; limit_1r_flag==0)                  {                    lcd_pos(1,16);                    lcdwrite_zm(&#39; &#39;);                    lcd_pos(2,9);                    lcdwrite_string(fd);                                        signal1=1;                    signal2=0;                    status=1;                    limit_1l_flag=0;                              }             else if(backward==0 &amp;&amp; limit_1l_flag==0)              {                    lcd_pos(1,16);                    lcdwrite_zm(&#39; &#39;);                    lcd_pos(2,9);                    lcdwrite_string(bk);                    signal1=0;                    signal2=1;                    status=1;                    limit_1r_flag=0;                              }              else              {                    lcd_pos(1,16);                    lcdwrite_zm(&#39; &#39;);                    lcd_pos(2,9);                    lcdwrite_string(stp);                    signal1=1;                    signal2=1;                    status=0;              }        }    }    else if(run_flag==1)     //Y轴    {         if(mode_flag==1)    //自动模态         {              if(forward==0 &amp;&amp; bk_flag2==0)                  {                        fd_flag2=~fd_flag2;                    if(fd_flag2==1)                    {                        lcd_pos(1,16);                        lcdwrite_zm(&#39; &#39;);                        lcd_pos(2,9);                        lcdwrite_string(fd);                                            signal3=1;                        signal4=0;                        status=1;                        limit_2l_flag=0;                    }                    else                    {                        lcd_pos(1,16);                        lcdwrite_zm(&#39; &#39;);                        lcd_pos(2,9);                        lcdwrite_string(stp);                        signal3=1;                        signal4=1;                        status=0;                    }                    while(forward==0);              }             if(backward==0 &amp;&amp; fd_flag2==0)              {                                bk_flag2=~bk_flag2;                    if(bk_flag2==1 )                    {                        lcd_pos(1,16);                        lcdwrite_zm(&#39; &#39;);                        lcd_pos(2,9);                        lcdwrite_string(bk);                        signal3=0;                        signal4=1;                        status=1;                        limit_2r_flag=0;                    }                    else                    {                        lcd_pos(1,16);                        lcdwrite_zm(&#39; &#39;);                        lcd_pos(2,9);                        lcdwrite_string(stp);                        signal3=1;                        signal4=1;                        status=0;                                                  }                     while(backward==0);              }             }      else if(mode_flag==0)    //手动        {              if(forward==0 &amp;&amp; limit_2r_flag==0)                  {                    lcd_pos(1,16);                    lcdwrite_zm(&#39; &#39;);                    lcd_pos(2,9);                    lcdwrite_string(fd);                                        signal3=1;                    signal4=0;                    status=1;                              }             else if(backward==0 &amp;&amp; limit_2l_flag==0)              {                    lcd_pos(1,16);                    lcdwrite_zm(&#39; &#39;);                    lcd_pos(2,9);                    lcdwrite_string(bk);                    signal3=0;                    signal4=1;                    status=1;                              }              else              {                    lcd_pos(1,16);                    lcdwrite_zm(&#39; &#39;);                    lcd_pos(2,9);                    lcdwrite_string(stp);                    signal3=1;                    signal4=1;                    status=0;              }        }    }}void int_int0() interrupt 0{    if(run_flag==0)           // X    {        if(mode_flag==0)        {           if(limit_1l==0)           {                limit_1l_flag=1;                limit_1r_flag=0;                            signal1=0;                signal2=0;                lcd_pos(1,16);                lcdwrite_zm(&#39;l&#39;);                lcd_pos(2,9);                lcdwrite_string(stp);                status=0;            }           else if(limit_1r==0)           {                   limit_1r_flag=1;                limit_1l_flag=0;                            signal1=0;                signal2=0;                lcd_pos(1,16);                lcdwrite_zm(&#39;r&#39;);                lcd_pos(2,9);                lcdwrite_string(stp);                status=0;           }                                                                }          else          {                  if(limit_1l==0)           {                limit_1l_flag=1;                limit_1r_flag=0;                signal1=0;                signal2=0;                                fd_flag=0;                bk_flag=0;                lcd_pos(1,16);                lcdwrite_zm(&#39;l&#39;);                lcd_pos(2,9);                lcdwrite_string(stp);                status=0;            }           else if(limit_1r==0)           {                   limit_1r_flag=1;                limit_1l_flag=0;                signal1=0;                signal2=0;                fd_flag=0;                bk_flag=0;                                                lcd_pos(1,16);                lcdwrite_zm(&#39;r&#39;);                lcd_pos(2,9);                lcdwrite_string(stp);                status=0;           }             }    }    else             // Y    {        if(mode_flag==0)       //手动        {              if(limit_2l==0)              {                    limit_2l_flag=1;                    limit_2r_flag=0;                                                    signal3=0;                    signal4=0;                        lcd_pos(1,16);                    lcdwrite_zm(&#39;l&#39;);                    lcd_pos(2,9);                    lcdwrite_string(stp);                    status=0;              }              else if(limit_2r==0)              {                       limit_2r_flag=1;                    limit_2l_flag=0;                                signal3=0;                    signal4=0;                        lcd_pos(1,16);                    lcdwrite_zm(&#39;r&#39;);                    lcd_pos(2,9);                    lcdwrite_string(stp);                    status=0;              }                                                                }        else              //自动        {                  if(limit_2l==0)           {                limit_2l_flag=1;                limit_2r_flag=0;                signal3=0;                signal4=0;                                fd_flag2=0;                bk_flag2=0;                lcd_pos(1,16);                lcdwrite_zm(&#39;l&#39;);                lcd_pos(2,9);                lcdwrite_string(stp);                status=0;            }           else if(limit_2r==0)           {                   limit_2r_flag=1;                limit_2l_flag=0;                signal3=0;                signal4=0;                fd_flag2=0;                bk_flag2=0;                                                lcd_pos(1,16);                lcdwrite_zm(&#39;r&#39;);                lcd_pos(2,9);                lcdwrite_string(stp);                status=0;           }           }                    }        }</code></pre>]]></content>
       
       
       <categories>
           
-          <category> 单片机作业 </category>
+          <category> 单片机 </category>
           
       </categories>
       
@@ -150,7 +150,7 @@
       
       <categories>
           
-          <category> 博客技术 </category>
+          <category> 前端 </category>
           
       </categories>
       
@@ -187,6 +187,284 @@
             <tag> hexo博客 </tag>
             
             <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>日志迁移</title>
+      <link href="/2020/03/20/life0/"/>
+      <url>/2020/03/20/life0/</url>
+      
+        <content type="html"><![CDATA[<p>#日志迁移</p><blockquote><p>我将halo博客上的日志迁移到了hexo博客上</p></blockquote><p>halo博客建立于 2020-02-29 20:13</p><p>3月21日，昨天搭建的这个博客！今天开始测试了，虽然是起步但是对我来说意义非凡，它现在不仅仅是一个我的个人博客，而且还是我新的开始。</p><p>3月23日<br>今天上午上网课，感觉有点累了，下午把这门课的作业全部补了一下，感觉还可以；但是想了想自己的单片机课就又有点麻木了。一颗按键三种功能怎么做的到嘛！真的是有点难，目前还没有想到答案。还在思考中。。。<br>之后我有去看了一下我的微信公众号，粉丝还是只有那么几个。这次我把视频全部放上去的，试一下视频的播放是怎么在微信公众号上实现的。感觉还是蛮好的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> halo博客 </tag>
+            
+            <tag> 随笔 </tag>
+            
+            <tag> 日志 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>有关git问题（出坑）</title>
+      <link href="/2020/03/18/blog1/"/>
+      <url>/2020/03/18/blog1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="git在使用时会出错。"><a href="#git在使用时会出错。" class="headerlink" title="git在使用时会出错。"></a>git在使用时会出错。</h2><p>看了好多资料终于搞定了git 中clone命令报错这个问题，废话不多说直接上步骤希望对大家有帮助。</p><ul><li><p>1   删除.ssh文件夹（直接搜索该文件夹）下的known_hosts(手动删除即可，不需要git）</p></li><li><p>2   在下载好的Git中的bin目录下打开bash.exe输入命令ssh-keygen -t rsa -C “username” (注：username为你git上的用户名)，如果执行成功。返回：</p><pre><code> Generating public/private rsa key pair. Enter file in which to save the key (/Users/username/.ssh/id_rsa): //这里的username是电脑上的用户名，这个地址也是文件的存储地址，然后我们按回车，如果你以前有存储地址会返回/Users/your username/.ssh/id_rsa already exists.Overwrite (y/n)?直接输入y回车。如果以前没有储存地址就会出现Enter passphrase(empty for no passphrase);也直接回车，两种情况回车后都会出现 Enter same passphrase again 然后接着回车会显示一长串内容其中还有一些..o.. o oo .oS. 之类的代码，这说明SSH key就已经生成了。文件目录就是：username/.ssh/id_rsa.pub.</code></pre></li></ul><ul><li><p>3  然后找到系统自动在.ssh文件夹下生成两个文件，id_rsa和id_rsa.pub，用记事本打开id_rsa.pub将全部的内容复制。</p></li><li><p>4  打开<code>https://github.com/</code>，登陆你的账户，进入设置（Settings）找到<br><img src="http://118.178.84.132:8090/upload/2020/4/%E6%89%B9%E6%B3%A8%202020-04-02%20185030-c608aa4606394d2981b285c5027697a7.png" alt="批注 20200402 185030.png"></p></li><li><p>5  然后将你复制的内容粘贴到key中</p></li></ul><p><img src="http://118.178.84.132:8090/upload/2020/4/%E6%89%B9%E6%B3%A8%202020-04-02%20185138-5391a981dc5d48b4bff44ae1e8d13e0a.png" alt="批注 20200402 185138.png"></p><p><img src="http://118.178.84.132:8090/upload/2020/4/%E6%89%B9%E6%B3%A8%202020-04-02%20185245-0cba61ac6593498c9b0d62b5e081c84c.png" alt="批注 20200402 185245.png"></p><p>再点击Add SSH Key                     </p><pre><code> ok还有最后一步</code></pre><ul><li><p>6  仍然在bash.exe中输入<code>ssh -T git@github.com</code>然后会跳出一堆内容你只需输入yes回车就完事了，然后他会提示你成功了。</p><p>  然后你就可以正常使用git clone命令了，最后祝你好运哈哈！</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 后端 </tag>
+            
+            <tag> git问题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>网页常用分享代码大全(前端必备)</title>
+      <link href="/2020/03/17/code1/"/>
+      <url>/2020/03/17/code1/</url>
+      
+        <content type="html"><![CDATA[<h6 id="1、新浪微博"><a href="#1、新浪微博" class="headerlink" title="1、新浪微博"></a>1、新浪微博</h6><pre><code>&lt;a href=&quot;http://v.t.sina.com.cn/share/share.php?url=http://www.shao-ming.com&amp;title=&quot;分享内容&quot;&quot; target=&quot;_blank&quot;&gt;新浪微博&lt;/a&gt; </code></pre><h6 id="2、腾讯微博"><a href="#2、腾讯微博" class="headerlink" title="2、腾讯微博"></a>2、腾讯微博</h6><pre><code>&lt;a href=&quot;http://v.t.qq.com/share/share.php?url=http://www.shao-ming.com&amp;title=&quot;分享内容&quot;&quot; target=&quot;_blank&quot;&gt;腾讯微博&lt;/a&gt; </code></pre><h6 id="3、开心网"><a href="#3、开心网" class="headerlink" title="3、开心网"></a>3、开心网</h6><pre><code>&lt;a href=&quot;javascript：window.open(&quot;http://www.kaixin001.com/repaste/share.php?rtitle=&quot;+encodeURIComponent(document.title)+&quot;&amp;rurl=&quot;+encodeURIComponent(document.location.href)+&quot;&amp;rcontent=&quot;);void(0)&quot;&gt;开心网&lt;/a&gt; </code></pre><p>或者用 </p><pre><code>&lt;a href=&quot;http://www.kaixin001.com/repaste/share.php?rurl=http://www.shao-ming.com&amp;rcontent=http://www.baidu.com&amp;rtitle=kaixin&quot; target=&quot;_blank&quot;&gt;开心网&lt;/a&gt; </code></pre><h6 id="4、豆瓣网"><a href="#4、豆瓣网" class="headerlink" title="4、豆瓣网"></a>4、豆瓣网</h6><pre><code>&lt;a href=&quot;javascript：window.open(&quot;http://www.douban.com/recommend/?url=&quot;+encodeURIComponent(document.location.href)+&quot;&amp;title=&quot;+encodeURIComponent(document.title));void(0)&quot;&gt;豆瓣&lt;/a&gt; </code></pre><p>或者用 </p><pre><code>&lt;a href=&quot;http://www.douban.com/recommend/?url=http://www.shao-ming.com&amp;title=douban&quot; target=&quot;_blank&quot;&gt;豆瓣&lt;/a&gt; </code></pre><h6 id="5、人人网"><a href="#5、人人网" class="headerlink" title="5、人人网"></a>5、人人网</h6><pre><code>&lt;a href=&quot;javascript：window.open(&quot;http://share.renren.com/share/buttonshare.do?link=&quot;+encodeURIComponent(document.location.href)+&quot;&amp;title=&quot;+encodeURIComponent(document.title));void(0)&quot;&gt;人人网&lt;/a&gt; </code></pre><p>或者用 </p><pre><code>&lt;a href=&quot;http://share.renren.com/share/buttonshare.do?link=http://www.shao-ming.com&quot; target=&quot;_blank&quot;&gt;人人网&lt;/a&gt; </code></pre><h6 id="6、百度贴吧"><a href="#6、百度贴吧" class="headerlink" title="6、百度贴吧"></a>6、百度贴吧</h6><pre><code>&lt;a href=&quot;http://tieba.baidu.com/f/commit/share/openShareApi?url=http://www.shao-ming.com&amp;title=hello&amp;desc=&amp;pic=&quot; target=&quot;_blank&quot;&gt;百度贴吧&lt;/a&gt; </code></pre><h6 id="7、QQ好友"><a href="#7、QQ好友" class="headerlink" title="7、QQ好友"></a>7、QQ好友</h6><pre><code>&lt;a href=&quot;http://connect.qq.com/widget/shareqq/index.html?title=qqhaoyou&amp;url=http://www.shao-ming.com&amp;desc=还不错哦&amp;pics=&amp;site=优酷&quot; target=&quot;_blank&quot;&gt;QQ好友&lt;/a&gt; </code></pre><h6 id="8、QQ空间"><a href="#8、QQ空间" class="headerlink" title="8、QQ空间"></a>8、QQ空间</h6><pre><code>&lt;a href=&quot;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.shao-ming.com&quot; target=&quot;_blank&quot;&gt;QQ空间&lt;/a&gt; </code></pre><h6 id="9、腾讯朋友"><a href="#9、腾讯朋友" class="headerlink" title="9、腾讯朋友"></a>9、腾讯朋友</h6><pre><code>&lt;a href=&quot;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?to=pengyou&amp;url=http://www.shao-ming.com&quot; target=&quot;_blank&quot;&gt;腾讯朋友&lt;/a&gt; </code></pre><h6 id="10、百度收藏"><a href="#10、百度收藏" class="headerlink" title="10、百度收藏"></a>10、百度收藏</h6><pre><code>&lt;a href=&quot;javascript：window.open(&quot;http://cang.baidu.com/do/add?it=&quot;+encodeURIComponent(document.title.substring(0,76))+&quot;&amp;iu=&quot;+encodeURIComponent(location.href)+&quot;&amp;fr=ien#nw=1&quot;,&quot;scrollbars=no,width=600,height=450,left=75,top=20,status=no,resizable=yes&quot;); void 0&quot;&gt;百度搜藏&lt;/a&gt; </code></pre><h6 id="11、优酷空间"><a href="#11、优酷空间" class="headerlink" title="11、优酷空间"></a>11、优酷空间</h6><pre><code>&lt;a href=&quot;http://i.youku.com/u/share/?url=http://www.shao-ming.com&amp;content=&quot;分享内容&quot;&quot; target=&quot;_blank&quot;&gt;优酷空间&lt;/a&gt; </code></pre><h6 id="12、搜狐微博"><a href="#12、搜狐微博" class="headerlink" title="12、搜狐微博"></a>12、搜狐微博</h6><pre><code>&lt;a href=&quot;http://t.sohu.com/third/post.jsp?content=utf-8&amp;url=http://www.shao-ming.com&amp;title=souhu&quot; target=&quot;_blank&quot;&gt;搜狐微博&lt;/a&gt; </code></pre><h6 id="13、MSN"><a href="#13、MSN" class="headerlink" title="13、MSN"></a>13、MSN</h6><pre><code>&lt;a href=&quot;http://profile.live.com/badge/?url=http://www.shao-ming.com&amp;Title=msn&quot; target=&quot;_blank&quot;&gt;MSN&lt;/a&gt; </code></pre><h6 id="14、猫扑"><a href="#14、猫扑" class="headerlink" title="14、猫扑"></a>14、猫扑</h6><pre><code>&lt;a href=&quot;http://tt.mop.com/share/shareV.jsp?title=moptietie&amp;pageUrl=http://www.shao-ming.com&quot; target=&quot;_blank&quot;&gt;MOP贴贴&lt;/a&gt; </code></pre><h6 id="15、网易微博"><a href="#15、网易微博" class="headerlink" title="15、网易微博"></a>15、网易微博</h6><pre><code>&lt;a href=&quot;http://t.163.com/article/user/checkLogin.do?link=http://www.shao-ming.com&quot; target=&quot;_blank&quot;&gt;网易微博&lt;/a&gt; </code></pre><h6 id="16、QQ书签"><a href="#16、QQ书签" class="headerlink" title="16、QQ书签"></a>16、QQ书签</h6><pre><code>&lt;a href=&quot;javascript：window.open(&quot;http://shuqian.qq.com/post?from=3&amp;title=&quot;+encodeURIComponent(document.title)+&quot;&amp;uri=&quot;+encodeURIComponent(document.location.href)+&quot;&amp;jumpback=2&amp;noui=1&quot;,&quot;favit&quot;,&quot;width=930,height=470,left=50,top=50,toolbar=no,menubar=no,location=no,scrollbars=yes,status=yes,resizable=yes&quot;);void(0)&quot;&gt;QQ书签&lt;/a&gt; </code></pre><h6 id="17、GOOGLE书签："><a href="#17、GOOGLE书签：" class="headerlink" title="17、GOOGLE书签："></a>17、GOOGLE书签：</h6><pre><code>&lt;a href=&quot;javascript：window.open(&quot;http://www.google.com/bookmarks/mark?op=add&amp;bkmk=&quot;+encodeURIComponent(document.location.href)+&quot;&amp;title=&quot;+encodeURIComponent(document.title));void(0)&quot;&gt;Google&lt;/a&gt; </code></pre><h6 id="18、Twitter"><a href="#18、Twitter" class="headerlink" title="18、Twitter"></a>18、Twitter</h6><pre><code>&lt;a href=&quot;javascript：window.open(&quot;http://twitter.com/home?status=&quot;+encodeURIComponent(document.location.href)+&quot; &quot;+encodeURIComponent(document.title));void(0)&quot;&gt;Twitter&lt;/a&gt; </code></pre><h6 id="19、Facebook"><a href="#19、Facebook" class="headerlink" title="19、Facebook"></a>19、Facebook</h6><pre><code>&lt;a class=&quot;fav_facebook&quot; rel=&quot;nofollow&quot; href=&quot;javascript：window.open(&quot;http://www.facebook.com/sharer.php?u=&quot;+encodeURIComponent(document.location.href)+&quot;&amp;t=&quot;+encodeURIComponent(document.title));void(0)&quot;&gt;Facebook&lt;/a&gt; </code></pre><h6 id="20、Delicious书签："><a href="#20、Delicious书签：" class="headerlink" title="20、Delicious书签："></a>20、Delicious书签：</h6><pre><code>&lt;a href=&quot;JavaScript：window.open(&quot;http://del.icio.us/post?url=&quot;+encodeURIComponent(document.location.href)+&quot;&amp;title=&quot;+encodeURIComponent(document.title)+&quot;&amp;notes=&quot;);void(0)&quot;&gt;Delicious&lt;/a&gt; </code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+            <tag> 网页代码 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>普通简单命令行的整理</title>
+      <link href="/2020/03/16/server1/"/>
+      <url>/2020/03/16/server1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="普通命令行代码使用"><a href="#普通命令行代码使用" class="headerlink" title="普通命令行代码使用"></a>普通命令行代码使用</h1><pre><code>## pwd : Windows环境下，检查你当前的位置；## mkdir __blog_ :在当前位置下建立一个文件夹blog；## :wq ：保持并退出；## ESC键 ： 退出；## ls（在MAC环境下）/dir（在Windows环境下）：检查当前文件夹中含有什么文件。## cd ：可以进入也可以退出文件夹；    cd ../.. ：后退两个文件夹；    cd blog ：进入文件夹blog；## 软件名字 -v ：现在的软件版本号；## git clone 网站名 地址（文件夹）：可以用来下载文件；## hexo sever 在本地预览自己的博客；    clean ：清理；    g ：生成网页；    d ：发送到服务器端；</code></pre><h1 id="Windows系统环境下："><a href="#Windows系统环境下：" class="headerlink" title="Windows系统环境下："></a>Windows系统环境下：</h1><h2 id="关机："><a href="#关机：" class="headerlink" title="关机："></a>关机：</h2><pre><code>## @echo   off       shutdown -s  // 一分钟后关机            -a  //    取消            -s -t 3000  // 3000秒后自动关机</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 后端 </tag>
+            
+            <tag> 命令行 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>手机电脑免费互传工具汇总</title>
+      <link href="/2020/03/15/function/"/>
+      <url>/2020/03/15/function/</url>
+      
+        <content type="html"><![CDATA[<h2 id="互传工具汇总"><a href="#互传工具汇总" class="headerlink" title="互传工具汇总"></a>互传工具汇总</h2><blockquote><p>手机和电脑已经成为我们日常生活中必不可少的工具。<br>得益于电子设备的特性，我们可以随时随地存储大量信息文件。<br>然而不可避免的问题是，有时我们需要把手机上的文件发送到电脑，在电脑上存储管理；<br>或者把电脑上的文件发送到手机，以供即时查阅。<br>这就要求我们连接手机和电脑。</p></blockquote><p>在没有数据线的情况下，我们最先想到的方法或许是用QQ或者微信作为传输媒介，或者利用邮箱和云端服务。事实上，有许多专业的文件传输工具等待我们利用，它们拥有各自不可替代的优点，比如无线传输、免登陆、批量传输等等。<br></br></p><ul><li>本文总结了7款免费文件传输工具，给大家介绍了其各自特点。</li><li>其中5款工具支持手机和电脑间文件互传；</li><li>2款支持电脑文件互传，从而分享文件给好友。希望大家能从中找到自己喜欢的传输工具，挺高工作和学习效率。</li></ul><h2 id="5款手机和电脑文件互传免费工具："><a href="#5款手机和电脑文件互传免费工具：" class="headerlink" title="5款手机和电脑文件互传免费工具："></a>5款手机和电脑文件互传免费工具：</h2><h3 id="1-爱莫助手：免登录无广告"><a href="#1-爱莫助手：免登录无广告" class="headerlink" title="1.爱莫助手：免登录无广告"></a>1.爱莫助手：免登录无广告</h3><p><a href="https://airmore.cn/" target="_blank" rel="noopener">https://airmore.cn/</a></p><p>爱莫助手是一个无线工具，只要在手机上安装一个APP即可无线连接手机和电脑。它功能比较多，可以无需数据线连接手机和电脑，传输照片、视频、音乐、文档等。它还支持文件预览、安卓手机屏幕投影到电脑，在电脑上发手机短信等。</p><h3 id="2-Airdroid：功能多"><a href="#2-Airdroid：功能多" class="headerlink" title="2. Airdroid：功能多"></a>2. Airdroid：功能多</h3><p><a href="http://web.airdroid.com/" target="_blank" rel="noopener">http://web.airdroid.com/</a></p><p>Airdroid也是一款强大的工具和爱莫助手功能差不多，支持无线连接手机和电脑。除了常规的文件传输，比如照片、音乐、消息、联系人，还可以手机投影电脑、屏幕截图、找回手机。但是需要注册账号登录使用。</p><h3 id="5-Dropbox：云端传输"><a href="#5-Dropbox：云端传输" class="headerlink" title="5. Dropbox：云端传输"></a>5. Dropbox：云端传输</h3><p><a href="https://www.dropbox.com/" target="_blank" rel="noopener">https://www.dropbox.com/</a></p><p>Dropbox类似云端服务，使用起来也很便捷。我们可以创建一个账号或者用Google账号登入，然后上传文件，在手机上接收。反过来也可以用手机上传文件在电脑上接收。</p><h2 id="2款电脑间文件互传工具："><a href="#2款电脑间文件互传工具：" class="headerlink" title="2款电脑间文件互传工具："></a>2款电脑间文件互传工具：</h2><h3 id="1-Reep-io"><a href="#1-Reep-io" class="headerlink" title="1. Reep.io"></a>1. Reep.io</h3><p><a href="https://reep.io/" target="_blank" rel="noopener">https://reep.io/</a></p><p>Reep.io是一款简单的在线工具，主要用来传输文件给朋友，添加文件后会生成一个链接，我们可以设置一个密码。想要获取的话，直接输入链接和密码就可以了。临时用用也是很不错的。</p><h3 id="2-文叔叔"><a href="#2-文叔叔" class="headerlink" title="2.文叔叔"></a>2.文叔叔</h3><p><a href="https://www.wenshushu.cn/" target="_blank" rel="noopener">https://www.wenshushu.cn/</a></p><p>可以快速发文件。<br><img src="http://118.178.84.132:8090/upload/2020/3/%E6%89%B9%E6%B3%A8%202020-03-22%20195434-3353cb1be2c44e43a96c27f54fae9a56.png" alt="批注 2020-03-22 195434"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 分享推荐 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具 </tag>
+            
+            <tag> 互传工具 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>单个按键实现单击、双击、长按的实现</title>
+      <link href="/2020/03/14/singlechip7-5/"/>
+      <url>/2020/03/14/singlechip7-5/</url>
+      
+        <content type="html"><![CDATA[<h1 id="单片机"><a href="#单片机" class="headerlink" title="单片机"></a>单片机</h1><blockquote><p>直接贴上源码和测试例程，附带的都有中文注释不多做解释。<br>单片机一颗按键的三种功能，更多资料我会下次放在期中中。</p></blockquote><h1 id="底层驱动："><a href="#底层驱动：" class="headerlink" title="底层驱动："></a>底层驱动：</h1><pre><code>#define key_state_0 0#define key_state_1 1#define key_state_2 2#define key_state_3 3#define key_no         0#define key_click    1#define key_double    2#define key_long    3#define key_input    P30</code></pre><h2 id="程序功能：一个按键的单击、双击、长按。三种按键方式，然后做不同的处理。"><a href="#程序功能：一个按键的单击、双击、长按。三种按键方式，然后做不同的处理。" class="headerlink" title="程序功能：一个按键的单击、双击、长按。三种按键方式，然后做不同的处理。"></a>程序功能：一个按键的单击、双击、长按。三种按键方式，然后做不同的处理。</h2><pre><code>static unsigned char key_driver(void){    static unsigned char key_state_buffer1 = key_state_0;    static unsigned char key_timer_cnt1 = 0;    unsigned char key_return = key_no;    unsigned char key;    key = key_input;  //read the I/O states    switch(key_state_buffer1)    {        case key_state_0:            if(key == 0)                key_state_buffer1 = key_state_1;                 //按键被按下，状态转换到按键消抖和确认状态//            break;        case key_state_1:            if(key == 0)            {                key_timer_cnt1 = 0;                key_state_buffer1 = key_state_2;                //按键仍然处于按下状态                //消抖完成，key_timer开始准备计时                //状态切换到按下时间计时状态            }            else                key_state_buffer1 = key_state_0;                //按键已经抬起，回到按键初始状态            break;  //完成软件消抖        case key_state_2:            if(key == 1)             {                key_return = key_click;  //按键抬起，产生一次click操作                key_state_buffer1 = key_state_0;  //转换到按键初始状态            }            else if(++key_timer_cnt1 &gt;= 100)  //按键继续按下，计时超过1000ms            {                key_return = key_long;  //送回长按事件                key_state_buffer1 = key_state_3;  //转换到等待按键释放状态            }            break;        case key_state_3:  //等待按键释放            if(key == 1)  //按键释放                key_state_buffer1 = key_state_0;  //切回按键初始状态            break;    }    return key_return;}</code></pre><p>函数功能：中层按键处理函数，调用底层函数一次，处理双击事件的判断，返回上层正确的无键、单击、双击、长按四种状态.</p><h2 id="本函数由上层循环调用，间隔10ms"><a href="#本函数由上层循环调用，间隔10ms" class="headerlink" title="本函数由上层循环调用，间隔10ms"></a>本函数由上层循环调用，间隔10ms</h2><pre><code>unsigned char key_read(void){    static unsigned char key_state_buffer2 = key_state_0;    static unsigned char key_timer_cnt2 = 0;    unsigned char key_return = key_no;    unsigned char key;    key = key_driver();    switch(key_state_buffer2)    {        case key_state_0:            if(key == key_click)            {                key_timer_cnt2 = 0;  //第一次单击，不返回，到下个状态判断是否会出现双击                key_state_buffer2 = key_state_1;            }            else                 key_return = key;  //对于无键、长按，返回原事件            break;        case key_state_1:            if(key == key_click)  //又一次单击，时间间隔小于500ms            {                key_return = key_double;  //返回双击事件，回到初始状态                key_state_buffer2 = key_state_0;            }            else if(++key_timer_cnt2 &gt;= 50)            {                //这里500ms内肯定读到的都是无键事件，因为长按大于1000ms                //在1s前底层返回的都是无键                key_return = key_click;  //500ms内没有再次出现单击事件，返回单击事件                key_state_buffer2 = key_state_0;  //返回初始状态            }            break;    }    return key_return;}</code></pre><h1 id="测试例程（基于51内核）"><a href="#测试例程（基于51内核）" class="headerlink" title="测试例程（基于51内核）"></a>测试例程（基于51内核）</h1><pre><code>void main(void){    u8 cnt_1ms=0,cnt_100ms=0;    u8 key_value = 0;    u8 led_flash=0;    GPIO_Configuration();    P3M1 &amp;= ~(1&lt;&lt;0);P3M2 &amp;= ~(1&lt;&lt;0); //P30准双向    P1M1 &amp;= ~(1&lt;&lt;2);P1M2 |=  (1&lt;&lt;2); //P12推挽    P12=0;Delay_ms(500);P12=1;Delay_ms(500);IWDG_Feed();    P12=0;Delay_ms(500);P12=1;Delay_ms(500);IWDG_Feed();    P12=0;Delay_ms(500);P12=1;Delay_ms(500);IWDG_Feed();    P12=0;Delay_ms(500);P12=1;Delay_ms(500);IWDG_Feed();    enableInterrupts();    IWDG_Configuration();    while(1)    {        if(++cnt_1ms&gt;=10)        {            cnt_1ms=0;            key_value = key_read();            if(key_value != key_no) led_flash = key_value*2;        }        if(++cnt_100ms&gt;=100)        {            cnt_100ms=0;            if(led_flash)            {                led_flash--;                P12 = ~P12;            }        }    }}</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 单片机 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 单片机 </tag>
+            
+            <tag> 作业 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>页面访问量统计以及代码高亮</title>
+      <link href="/2020/03/13/blog0/"/>
+      <url>/2020/03/13/blog0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="页面访问量统计"><a href="#页面访问量统计" class="headerlink" title="页面访问量统计"></a>页面访问量统计</h1><h2 id="1-在head中插入代码"><a href="#1-在head中插入代码" class="headerlink" title="1.在head中插入代码"></a>1.在head中插入代码</h2><pre><code>&lt;script async src=&quot;//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;</code></pre><h2 id="2-在合适的地方插入代码"><a href="#2-在合适的地方插入代码" class="headerlink" title="2.在合适的地方插入代码"></a>2.在合适的地方插入代码</h2><p>Ghost的话，我是在theme主题文件下，找到default.hbs这个文件，将下面的代码插入到这个文件里就好了，希望大家好运吧！</p><!-- 整站统计 --><pre><code>&lt;span id=&quot;busuanzi_container_site_uv&quot;&gt;  本站总访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;次  本站访客数&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;人次&lt;/span&gt;</code></pre><!-- 单页面统计 --><pre><code>&lt;span id=&quot;busuanzi_container_page_pv&quot;&gt;  本文总阅读量&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;/span&gt;次  本文访客数&lt;span id=&quot;busuanzi_value_page_uv&quot;&gt;&lt;/span&gt;人次&lt;/span&gt;</code></pre><h2 id="代码高亮设置"><a href="#代码高亮设置" class="headerlink" title="代码高亮设置"></a>代码高亮设置</h2><p>搭建好Ghost后，默认并不会对页面中的代码作其他处理，并不能直观地显示出代码结构，我们可以通过highlight.js的帮助实现代码高亮。<br>==此教程非常简易明了，助你在CentOS轻松用上highlight.js==</p><p>顺手贴上highlight.js的介绍:<br>–支持 71 种编程语言的语法解析<br>–拥有 44 种样式<br>–自动检测编程语言<br>–同时为多种编程语言代码高亮<br>–可以在 node.js 平台上运行<br>–支持各种标签<br>–与任何 js 框架兼容</p><p>highlight.js主要是从页面下手，植入样式，看见网络上大多的做法都是本地下载highlight.js，再在页面上用js连接，不过我觉得那比较适合windows主机，我们来使用一个简单快捷的方法实现。主要是引入一个css文件和一个js文件，配合Bootstrap所提供的CDN链接，加载速度方面完全不用担心，进到BootCDN搜索highlight.js就能找到，提供历史各个版本各个样式</p><h2 id="这里使用highlight-s9-0-0来作例子，亦可直接跟着同步设置"><a href="#这里使用highlight-s9-0-0来作例子，亦可直接跟着同步设置" class="headerlink" title="这里使用highlight.s9.0.0来作例子，亦可直接跟着同步设置"></a>这里使用highlight.s9.0.0来作例子，亦可直接跟着同步设置</h2><p>(演示系统为Centos 6)</p><p>首先我们需要在页面的<head>里引入css文件：<br>进入Ghost下的主题目录：</p><pre><code># cd /var/www/ghost/content/themes/# lscasper-zh ghostium roon-zh</code></pre><p>我这里有三个主题，我们接下来要修改主题文件夹下的default.hbs文件:</p><pre><code># vi ghostium/default.hbs</code></pre><p>找到<head>标签,在其内添加我们需要的highlight.js的样式：</p><pre><code>&lt;link href=&quot;//cdn.bootcss.com/highlight.js/9.0.0/styles/tomorrow.min.css&quot; rel=&quot;stylesheet&quot;&gt;</code></pre><p>然后在<body>里引入js文件：</p><pre><code>&lt;script src=&quot;//cdn.bootcss.com/highlight.js/9.0.0/highlight.min.js&quot;&gt;&lt;/script&gt;</code></pre><p>同时在其后面再添加一句js的调用代码：</p><pre><code>&lt;script &gt;hljs.initHighlightingOnLoad();&lt;/script&gt;</code></pre><p>工作完成，在我们ghost下所有的页面，highlight.js都会自动寻找&lt; pre&gt;<code class="python"></code></pre >标签对其操作使代码实现高亮，在markDown编辑器中我们只需要像往常一样使用““`”语法来键入代码块即可，除了我们可以为代码块指定语言外，highlight.js还会==自动分析==语言对其进行高亮处理，手动选择语言样式的书写格式如下：</p><pre><code>     ```c++          //something     ```</code></pre><h2 id="样式展示："><a href="#样式展示：" class="headerlink" title="样式展示："></a>样式展示：</h2><pre><code>AndroidstudioC#.pngMonokaiC#2.pngXcodeC#3.pngTomorrowC#4.png</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 代码 </tag>
+            
+            <tag> 访问量 </tag>
+            
+            <tag> 前端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>视频，音频，博客代码</title>
+      <link href="/2020/03/12/media1/"/>
+      <url>/2020/03/12/media1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="第一个视频"><a href="#第一个视频" class="headerlink" title="第一个视频"></a>第一个视频</h2><center> <iframe src="//player.bilibili.com/player.html?aid=53660661&cid=93868411&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe> </center><p>代码如下：</p><pre><code>&lt;iframe src=&quot;//player.bilibili.com/player.html?aid=53660661&amp;cid=93868411&amp;page=1&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot;&gt; &lt;/iframe&gt;</code></pre><h2 id="再来一个"><a href="#再来一个" class="headerlink" title="再来一个"></a>再来一个</h2><center> <iframe src="//player.bilibili.com/player.html?aid=98657407&bvid=BV1a7411m7aw&cid=168411372&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true">  </iframe> </center><p>代码如下：</p><pre><code>&lt;iframe src=&quot;//player.bilibili.com/player.html?aid=98657407&amp;bvid=BV1a7411m7aw&amp;cid=168411372&amp;page=1&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot;&gt; &lt;/iframe&gt;</code></pre><h2 id="来别的试试"><a href="#来别的试试" class="headerlink" title="来别的试试"></a>来别的试试</h2><h3 id="点击后播放"><a href="#点击后播放" class="headerlink" title="点击后播放"></a>点击后播放</h3><p><a href="https://vdse.bdstatic.com/d19a284d4cc5f3e4597b553d7b7dd377.mp4" target="_blank" rel="noopener">点击此处来播放视频文件</a></p><p>代码如下：</p><pre><code>&lt;a href=&quot;https://vdse.bdstatic.com/d19a284d4cc5f3e4597b553d7b7dd377.mp4&quot;&gt;点击此处来播放视频文件&lt;/a&gt;</code></pre><h3 id="嵌入式播放"><a href="#嵌入式播放" class="headerlink" title="嵌入式播放"></a>嵌入式播放</h3><p>代码如下：</p><pre><code>&lt;object data=&quot;https://vdse.bdstatic.com/d19a284d4cc5f3e4597b553d7b7dd377.mp4&quot; type=&quot;video/avi&quot; /&gt;</code></pre><h3 id="换一种"><a href="#换一种" class="headerlink" title="换一种"></a>换一种</h3><pre><code>&lt;embed src=&quot;https://vdse.bdstatic.com/d19a284d4cc5f3e4597b553d7b7dd377.mp4&quot; /&gt;</code></pre><h2 id="再来一个音乐"><a href="#再来一个音乐" class="headerlink" title="再来一个音乐"></a>再来一个音乐</h2><center> <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=411754401&auto=0&height=32"></iframe> </center><p>代码如下：</p><pre><code>&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=298 height=52 src=&quot;//music.163.com/outchain/player?type=2&amp;id=411754401&amp;auto=0&amp;height=32&quot;&gt;&lt;/iframe&gt;</code></pre><h2 id="其他代码"><a href="#其他代码" class="headerlink" title="其他代码"></a>其他代码</h2><h3 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h3><pre><code>&lt;video id=&quot;video&quot; controls=&quot;&quot; preload=&quot;none&quot; poster=&quot;http://om2bks7xs.bkt.clouddn.com/2017-08-26-Markdown-Advance-Video.jpg&quot;&gt;      &lt;source id=&quot;mp4&quot; src=&quot;http://118.178.84.132:8090/upload/2020/3/%E8%80%83%E7%A0%94-63e2659827f149d4bdf262301ee28db8.mp4&quot; type=&quot;video/mp4&quot;&gt;      &lt;/video&gt;width=&quot;720&quot; height=&quot;480&quot; src=&quot;http://118.178.84.132:8090/upload/2020/3/%E8%80%83%E7%A0%94-63e2659827f149d4bdf262301ee28db8.mp4&quot; allowfullscreen=&quot;&quot;&gt;</code></pre><h3 id="音乐"><a href="#音乐" class="headerlink" title="音乐"></a>音乐</h3><pre><code>&lt;audio id=&quot;audio&quot; controls=&quot;&quot; preload=&quot;none&quot;&gt;&lt;source id=&quot;mp3&quot; src=&quot;http://oht4nlntk.bkt.clouddn.com/Music_iP%E8%B5%B5%E9%9C%B2%20-%20%E7%A6%BB%E6%AD%8C%20%28Live%29.mp3&quot;&gt;&lt;/audio&gt;&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=110 src=&quot;//music.163.com/outchain/player?type=0&amp;id=2574773134&amp;auto=1&amp;height=90&quot;&gt;&lt;/iframe&gt;</code></pre><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><pre><code>[附件1](http://118.178.84.132:8090/upload/2020/3/aurelius-cd4a0b5d6595400195710dbc2d900eb3.zip)&lt;a href=&quot;http://118.178.84.132:8090/upload/2020/3/aurelius-cd4a0b5d6595400195710dbc2d900eb3.zip&quot;&gt;点击下载&lt;/a&gt;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+            <tag> 视频 </tag>
+            
+            <tag> 音频 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>无广告搜索引擎</title>
+      <link href="/2020/03/11/searchengines1/"/>
+      <url>/2020/03/11/searchengines1/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>最近，一个名叫 Magi 的搜索引擎成了重点关注对象，据称这个搜索引擎和我们常见的搜索引擎很不一样，有一种程序员们钟爱的 X 冷淡风格。于是我们打开 Magi 看了看。确实，这个页面看着就很让人舒爽。</p></blockquote><h2 id="Magi搜索"><a href="#Magi搜索" class="headerlink" title="Magi搜索"></a>Magi搜索</h2><p>点击此处去看看：<a href="https://magi.com/" target="_blank" rel="noopener">Magi搜索</a><br><img src="http://118.178.84.132:8090/upload/2020/3/656813d9bc02f07-2ec41a054b8048d8876c7a5266734849.jpg" alt="656813d9bc02f07"></p><p>重要的是搜索结果也很不一般，属性中的每一个结果有对应的链接，并带有标签和主要学习来源部分，搜索结果以结构化知识的形式呈现。这种模式和国内外主流的搜索引擎完全不一样，让人感觉新鲜。</p><p>当然，也让人由此发出疑问：Magi 到底是什么，是谁开发的，好不好用？</p><p>按照开发者 PeakJi 季逸超的讲述和 Magi 网站上的说明，Magi 其实并不是单纯的网页搜索引擎，而是自主阅读文本并持续纠错的 AI。</p><p><img src="http://118.178.84.132:8090/upload/2020/3/72837d5d8641a40-3e2a927d299c4484948d146dea41bb81.jpg" alt="72837d5d8641a40"></p><p>Magi 是由 Peak Labs 从无到有自研的基于机器学习的信息抽取和检索系统，它能将任何领域的自然语言文本中的知识提取成结构化的数据，通过终身学习持续聚合和纠错，进而为人类用户和其他人工智能提供可解析、可检索、可溯源的知识体系。11 月，Peak Labs 发布了公众版 Magi.com。</p><p>与搜索引擎不同，Magi 不仅收录互联网上的海量文本，还会去尝试理解并学习这些文本中蕴含的知识和数据。此外，Magi 从零研发了一套互联网搜索引擎，所以 Magi.com 同时提供全网规模的普通搜索结果，学习过程是在无人干预的情况下 7 x 24 小时不间断运行。</p><p>互联网数据浩如烟海，质量参差不齐，如何将这些数据处理成机器能够理解的数据结构时隔巨大的挑战。在“Magi 的使命”一项中，Peak Labs这样写道：作为公众版本的 magi.com 为人类用户提供了与互联网数据交互的新方式，而 Magi 系统背后的技术平台则承载着另一半重要的意义：让机器像人一样能理解并充分利用互联网中无穷无尽的知识。</p><p>对 Magi 的技术感兴趣的同学，可以访问 <a href="http://www.peak-labs.com" target="_blank" rel="noopener">www.peak-labs.com</a> 官网和季逸超的知乎，我们在这里就不多说了。</p><h2 id="下面来关注一下-Magi-背后的团队——Peak-Labs，以及创始人PeakJi-。"><a href="#下面来关注一下-Magi-背后的团队——Peak-Labs，以及创始人PeakJi-。" class="headerlink" title="下面来关注一下 Magi 背后的团队——Peak Labs，以及创始人PeakJi 。"></a>下面来关注一下 Magi 背后的团队——Peak Labs，以及创始人PeakJi 。</h2><p>创始人 PeakJi 真名季逸超，90 后男生，在北大附中读高中期间接触 iOS 并加入威锋网 WEIP 技术组，先后参与了 wefit 输入法的完善和各种越狱研究，高三设计并开发猛犸 1 网页浏览器，大一推出猛犸 4。据说，PeakJi 所有的产品都是由他独自完成设计、美工、算法、编码、测试和推广，可见啊这是一个非常有想法，动手能力也很强的“技术宅”了。</p><p>2012 年，在北大念书的季逸超创建 Peak Labs，并发明了 Rasgueado 输入法。据说 Peak Labs 的产品和技术还有很多，什么神经信息提取系统 Ireul，网页大规模搜索引擎 Ramiel，多语言分析 pipeline Arael 和分布式检索系统 Matarael 等等，利用这些技术构架，他们搭建了 Magi 服务，包括普惠版和企业版两种。</p><p>如果你要问 Magi 好不好用，我们暂时也无法给出明确回答，因为 Magi 目前完成度还有待提高。但是，比起当做搜索引擎来用，Magi 应该更适合做知识学习链库。</p><p>在使用的过程，我们会发现 Magi 也有很多不足之处，尤其是在搜索规模和答案准确度上。面对一些简单搜索，Magi 往往给不出让人满意的答案，而且速度也不够快。另外，它不是一款搜索引擎，像搜索网址这类任务也达不到很好的效果，也无法进行图片搜索。</p><p>对于 Magi 的缺点，团队和 PeakJi 都大方坦诚。</p><p>Peak Labs 指出，Magi 已经展示出的开放领域信息提取能力，可以应用到企业客户所在的细分领域内，变成一个更加强大的信息抽取系统，让每一个领域、每一家企业都可以轻松地打造属于自己的知识图谱，他们希望未来的 Magi 系统能够成为“知识领域的 ImageNet”。</p><p>Magi 现在还远算不上成熟，但其特性决定了它无穷的可能性和成长空间。未来，也许 Magi 会成为打破现有搜索引擎原理的新范式，开启全新的结构化知识搜索引擎时代，改变我们对信息检索和知识获取方式的刻板印象，毕竟在信息大革命和人工智能大发展的时代，千帆竞速，百舸争流，谁都有机会。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 分享推荐 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 搜索引擎 </tag>
+            
+            <tag> 推荐 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>服务器查看磁盘信息指令</title>
+      <link href="/2020/03/10/aliyun1/"/>
+      <url>/2020/03/10/aliyun1/</url>
+      
+        <content type="html"><![CDATA[<p>#阿里云<br>您是否遇到过这种情况，数据盘空间富足，系统盘无缘无故感觉就满了？一直在找问题？由此导致的本机mysql无法启动？</p><p>等一系列坑爹的问题！输入：df -h，我们看看磁盘使用情况。</p><p>40G空间  使用了2.6G  占百分之7，实际可用有35G，感觉还是可以的。</p><p>尼玛，吃了那么多。。难怪刚才mysql无缘无故写不进去，重启系统之后导致mysql服务启动！</p><p>清理之前，请备份网站或阿网站快照，</p><p>ok，我们来接上面的话题解决这个问题，输入命令：</p><p>tmpwatch -afv 5 /tmp</p><p>不同操作系统清理命令不一样，导致网站无法访问，推荐进入FTP清理，往下底部还有其他清理方法文章。</p><p>会看到一系列删除动作，删除了日志文件这些垃圾占用空间。ok，继续查看。</p><p>现在正常了。</p><p>什么是tmpwatch命令？</p><p>tmpwatch  –  removes  files  which haven’t been accessed for a period of time</p><p>如上所言，删除指定的目录中一段时间未访问的文件。一般对于/tmp下的文件或日志文件。</p><p>参数：</p><pre><code>-a或–all 　删除任何类型的文件。-m或–mtime   根据文件被更改时间-c或–ctime     根据文件更改状态时间-M或–dirtime  根据文件夹被更改时间-f或–force 　强制删除文件或目录，其效果类似rm指令的”-f”参数。-l  不删除符号链接-U或–exclude-user=用户名或uid  排除某用户的文件-x 或–exclude=path 排除某路径-X 或–exclude-pattern=pattern 排除某规则下的路径-q或–quiet 　不显示指令执行过程。-v或–verbose 　详细显示指令执行过程。-test 　仅作测试，并不真的删除文件或目录。</code></pre><p>另外对于运维人员我要强调一下-d或–nodirs选项， 某些运维人员可能在日志文件夹中创建了子目录，默认子目录也会被删除的，使用-d参数可以避免。</p><p>另外：做好备份10天前左右最佳！</p><h1 id="CentOS7-查看其他磁盘信息"><a href="#CentOS7-查看其他磁盘信息" class="headerlink" title="CentOS7 查看其他磁盘信息"></a>CentOS7 查看其他磁盘信息</h1><p>除了上次的df -h来查看磁盘信息后我感觉要把其他的也放一下，防止我忘记了，也可以让大家看到。</p><h2 id="CentOS7-查看硬盘情况"><a href="#CentOS7-查看硬盘情况" class="headerlink" title="CentOS7 查看硬盘情况"></a>CentOS7 查看硬盘情况</h2><pre><code>lsblk 　　　　                                 查看分区和磁盘df -h 　　                                        查看空间使用情况fdisk -l 　　                                    分区工具查看分区信息cfdisk /dev/sda  　　                      查看分区blkid 　                                       　查看硬盘 label（别名）du -sh ./* 　　                                统计当前目录各文件夹大小free -h 　                                    　查看内存大小cat /proc/cpuinfo| grep &quot;cpu cores&quot;| uniq  　　查看 CPU 核心数</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 阿里云 </tag>
+            
+            <tag> 服务器 </tag>
+            
+            <tag> 后端 </tag>
             
         </tags>
       
@@ -285,7 +563,7 @@
       
       <categories>
           
-          <category> 博客技术 </category>
+          <category> 前端 </category>
           
       </categories>
       
@@ -312,7 +590,7 @@
       
       <categories>
           
-          <category> 博客技术 </category>
+          <category> 前端 </category>
           
       </categories>
       
@@ -339,7 +617,7 @@
       
       <categories>
           
-          <category> 博客技术 </category>
+          <category> 前端 </category>
           
       </categories>
       
@@ -358,15 +636,15 @@
     
     <entry>
       <title>单片机原理与接口技术</title>
-      <link href="/2020/03/03/%E5%8D%95%E7%89%87%E6%9C%BA0/"/>
-      <url>/2020/03/03/%E5%8D%95%E7%89%87%E6%9C%BA0/</url>
+      <link href="/2020/03/03/singlechip0/"/>
+      <url>/2020/03/03/singlechip0/</url>
       
         <content type="html"><![CDATA[<h1 id="第一讲"><a href="#第一讲" class="headerlink" title="第一讲"></a>第一讲</h1><p>初识、试用单片机欢迎大家进入单片机现场学习的课堂。在本讲我们带领大家一起了解单片机的开发设计过程，并为大家回顾和复习一些本课程需要的相关基础知识。闲话少叙，让我们开始吧。</p><h2 id="第一篇-系统开发软件安装"><a href="#第一篇-系统开发软件安装" class="headerlink" title="第一篇 系统开发软件安装"></a>第一篇 系统开发软件安装</h2><h3 id="STEP1：安装写入芯片程序的硬件驱动"><a href="#STEP1：安装写入芯片程序的硬件驱动" class="headerlink" title="STEP1：安装写入芯片程序的硬件驱动"></a>STEP1：安装写入芯片程序的硬件驱动</h3><p>一个已经设计好的功能程序（假定我们手头已经有了）需要写入到控制系统的 CPU 芯片上去，我们是通过笔记本的 USB 口在通过开发板的串口写进去的。所以就需要安装“USB 转串口”的驱动。</p><p>在我们提供给大家的光盘里有一个名为：“2.开发板驱动的安装”文件夹，打开它，里边有一个名为：“USB 转串口通讯线驱动的安装”的文件夹，里边又有程序文件：“CH340USB 转串口驱动安装程序.EXE”。双击运行它，系统会弹出窗口如图 1 所示。</p><p><img src="http://118.178.84.132:8090/upload/2020/3/img01-1df5fe7c83d84ab7ad56a719a65232a8.png" alt="img01.png"></p><p>接下来，当然是点击图中的“INSTALL”按钮了，然后你就喝杯茶吧，等会出来图 2 的界面就表示驱动安装好了。</p><p>然后我们来试着用用看。我们把 USB 转串口线插到电脑的 USB 口上（为了保证 USB 转串口线稳定工作，最好插到主板的 USB 口上，有的用户机箱的 USB前置口会因为供电不足问题影响 USB 转串口线的正常工作），将另一端的接入到开发板一侧的“信号和电源”端口上。你看看那个接口恰好能插进去，就是那个端口。这也是设计者专门为用户想好的，即所谓的“傻瓜式接法”。 </p><p>接着我们再查一下电脑为这个串口自动分配的串口号。鼠标右击桌面“我的电脑”在菜单里选择“属性”，接着在弹出的界面里选择其“硬件”页面下的“设备管理器”，然后在弹出的图4的窗口中点击 旁边的 + 号，展开可以看到系统为这个串口安排的端口号。</p><p>好，进行到这里，事情就好办了，我们继续干！ </p>]]></content>
       
       
       <categories>
           
-          <category> 单片机资料 </category>
+          <category> 单片机 </category>
           
       </categories>
       
@@ -420,7 +698,7 @@
       
       <categories>
           
-          <category> Markdown应用 </category>
+          <category> 前端 </category>
           
       </categories>
       
